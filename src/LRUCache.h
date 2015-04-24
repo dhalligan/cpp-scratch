@@ -5,9 +5,9 @@ using std::unordered_map;
 using std::list;
 using std::pair;
 
-/*! \brief LRUCache
+/*! \brief LRUCache implements a simple cache with LRU (least recently used) replacement policy
  *
- *  LRUCache implements a simple cache with LRU (least recently used) replacement policy
+ *  My detailed description
 */
 template <class K, class V, size_t capacity>
 class LRUCache
