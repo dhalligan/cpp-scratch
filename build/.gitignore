@@ -1,0 +1,7 @@
+#Ignore:
+
+#files being edited
+*~
+
+# make and build files
+*.o
