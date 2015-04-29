@@ -6,7 +6,6 @@
 #include <memory>
 #include <sstream>
 
-
 #include "app.h"
 
 App::App(int& argc, char** argv)
@@ -872,9 +871,10 @@ int App::exec()
   cout << "value of " << rntest_2 << " = " << roman_to_int_2(rntest_2) << endl;
   const string rntest_3 = "LVIIII";
   cout << "value of " << rntest_3 << " = " << roman_to_int_2(rntest_3) << endl;
+
+
   
 }
-
 
 // int string_to_integer(const std::string& s, const int base)
 // {

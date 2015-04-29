@@ -1,5 +1,9 @@
 #include "Thread.h"
 
+int unit_test_thread(int x) {
+  return 2 * x;
+}
+
 mutex m;
 int sh;
 

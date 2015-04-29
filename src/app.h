@@ -347,9 +347,6 @@ class Parity
 };
 
 
-
-
-
 string compress_string(string& s);
 string compress_string_2(string& s);
 

@@ -5,10 +5,12 @@
  * see "sanity_check.cpp". For a reference on creating tests, see "test.h".
  *
  */
-#include "test.h"
 
-int main(int argc, char* argv[])
-{
-  //    return UnitTest::RunAllTests();
-  return 0;
-}
+#define CATCH_CONFIG_MAIN
+#include <catch.hpp>
+
+// int main(int argc, char* argv[])
+// {
+//   //    return unittest::runalltests();
+//   return 0;
+// }

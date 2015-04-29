@@ -1,11 +1,15 @@
 #include "Recursion.h"
 
+int unit_test_func(int x) {
+  return 2 * x;
+}
+
 int count_permutations_1(int n)
 {
   if (n < 0) { return 0; }
   if (n == 0) { return 1; }
 
-  return 
+  return
     count_permutations_1(n - 3) +
     count_permutations_1(n - 2) +
     count_permutations_1(n - 1);
@@ -20,8 +24,8 @@ int count_permutations_2(int k, vector<int>& score_ways)
   if (permutations[k] > -1) {
     return permutations[k];
   } else {
-    permutations[k] = 
-      count_permutations_2(k - 3, score_ways) + 
+    permutations[k] =
+      count_permutations_2(k - 3, score_ways) +
       count_permutations_2(k - 2, score_ways) +
       count_permutations_2(k - 1, score_ways);
     return permutations[k];
@@ -60,9 +64,9 @@ void parenthesis_helper(int left, int right, string* ans, vector<string>* res)
 {
   if (left < 0 || right < left) { return; }
 
-  if (left == 0 && right == 0) { 
-    res->emplace_back(*ans); 
-    return; 
+  if (left == 0 && right == 0) {
+    res->emplace_back(*ans);
+    return;
   }
 
   if (left > 0) {
@@ -70,16 +74,16 @@ void parenthesis_helper(int left, int right, string* ans, vector<string>* res)
     parenthesis_helper(left - 1, right, ans, res);
     ans->pop_back();
   }
-  
+
   if (right > 0) {
     ans->push_back(')');
     parenthesis_helper(left, right - 1, ans, res);
     ans->pop_back();
   }
-  
+
 }
 
-vector<string> valid_parenthesis(int n) 
+vector<string> valid_parenthesis(int n)
 {
   if (n == 0) { return vector<string>{}; }
   string ans;

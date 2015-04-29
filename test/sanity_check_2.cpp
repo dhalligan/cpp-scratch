@@ -8,15 +8,10 @@
 
 #include <catch.hpp>
 
-#include "Recursion.h"
+#include "Thread.h"
 
-TEST_CASE("one equals one", "[one]") {
-  int one = 1;
-  REQUIRE( one == 1 );
-}
-
-TEST_CASE( "Coin combinations are computed", "[coin_combinations]" ) {
-  REQUIRE( unit_test_func(5) == 10 );
+TEST_CASE( "Thread functions work", "[thread_functions]" ) {
+  REQUIRE( unit_test_thread(5) == 10 );
 }
 
 /* 

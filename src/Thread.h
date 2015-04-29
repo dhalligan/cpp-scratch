@@ -14,6 +14,8 @@ using std::unique_lock;
 using std::condition_variable;
 using std::queue;
 
+int unit_test_thread(int x);
+
 void taskf(vector<double>& v, double* res);
 
 struct TaskF {
