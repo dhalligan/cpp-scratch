@@ -5,3 +5,4 @@
 
 # make and build files
 *.o
+appinfo.h
