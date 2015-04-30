@@ -106,6 +106,12 @@ namespace StringUtil {
     }
   }
 
+  void replace_character_string(string& s, size_t size, char c, string& r)
+  {
+    using namespace Algorithm;
+    my_replace_multiple(s.begin(), std::next(s.begin(), size), s.end(), c, r.begin(), r.end());
+  }
+
   string compress_string(const string& s)
   {
     auto first = s.begin(), last = s.end();
@@ -355,9 +361,9 @@ namespace StringUtil {
 
   string int_to_roman(int n)
   {
-    
+
   }
 
-  
+
 
 }

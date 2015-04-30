@@ -1,3 +1,6 @@
+#ifndef ALGORITHM
+#define ALGORITHM
+
 namespace Algorithm {
 
 template <class InputIt, class T>
@@ -42,6 +45,27 @@ UnaryFunction my_for_each(InputIt first, InputIt last, UnaryFunction f)
   return std::move(f);
 }
 
+template <class BiDirIt, class T>
+void my_replace_multiple(BiDirIt first, BiDirIt first_n, BiDirIt last, const T& old_value, BiDirIt first_new_value, BiDirIt last_new_value)
+{
+  if (first == first_n || first == last) { return; }
+
+  --last;
+  --first_n;
+  while (first_n != first) {
+    if (*first_n == old_value) {
+      auto it = last_new_value;
+      while (--it != first_new_value) {
+	*last-- = *it;
+      }
+      *last-- = *it;
+    } else {
+      *last-- = *first_n;
+    }
+    --first_n;
+  }
+}
+
 template <class ForwardIt, class T>
 ForwardIt my_remove(ForwardIt first, ForwardIt last, const T& value)
 {
@@ -70,7 +94,7 @@ ForwardIt my_remove_if(ForwardIt first, ForwardIt last, UnaryPredicate p)
       *result++ = std::move(*first);
     }
   }
-  
+
   return result;
 }
 
@@ -169,3 +193,5 @@ ForwardIt my_unique_copy(ForwardIt first, ForwardIt last, OutputIt result, Binar
 }
 
 }
+
+#endif
