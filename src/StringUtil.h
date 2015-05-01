@@ -9,6 +9,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "Algorithm.h"
+
 using std::string;
 using std::unordered_map;
 using std::array;
@@ -57,6 +59,7 @@ namespace StringUtil {
   bool is_permutation_3(const string& s, const string& t);
   bool unique_chars(const string& s);
   void replace_spaces(string& s, const string& r);
+  void replace_character_string(string& s, size_t size, char c, string& r);
   string compress_string(const string& s);
   string integer_to_string(int n, size_t base);
   int string_to_integer(const string& s, size_t base);

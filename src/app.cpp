@@ -697,116 +697,125 @@ int App::exec()
   replace_spaces(name, rep);
   cout << "Formatted name: " << name << endl;
 
+  string name2 = "Mr John Smith    ";
+  string rep2 = "%20";
+  my_replace_multiple(name2.begin(), std::next(name2.begin(), 13), name2.end(), ' ', rep2.begin(), rep2.end());
+  cout << "Formatted name: " << name2 << endl;
 
-  string mystoi = "AB";
-  size_t mybase = 16;
-  cout << "converting string to integer: " << string_to_integer(mystoi, mybase) << endl;
+  string name3 = "Mr John Smith    ";
+  string rep3 = "%20";
+  replace_character_string(name3, 13, ' ', rep3);
+  cout << "Formatted name: " << name3 << endl;
 
-  List<int> testlist;
-  testlist.push_back(1);
-  testlist.push_back(2);
-  testlist.push_back(3);
-  testlist.push_back(4);
-  testlist.push_back(5);
-  testlist.push_back(5);
-  testlist.push_back(5);
-  testlist.push_back(5);
-  testlist.push_back(6);
-  testlist.print();
-  cout << "size of list: " << testlist.size() << ", " << testlist.size_recursive_1() << ", " << testlist.size_recursive_2() << ", " << testlist.size_iterative() << endl;
-  testlist.remove_duplicates();
-  testlist.print();
-  cout << "median: " << testlist.median() << endl;
+  // string mystoi = "AB";
+  // size_t mybase = 16;
+  // cout << "converting string to integer: " << string_to_integer(mystoi, mybase) << endl;
 
-  CircularVector<int> mv(16);
-  Queue<int> myqueue(mv);
-  myqueue.push(1);
-  myqueue.push(2);
-  myqueue.push(3);
-  cout << "front of queue: " << myqueue.front() << endl;
-  //  QueueTwoStacks<int> mq;
-  //  Queue<int,List<int> > mq;
-  Queue<int,CircularVector<int> > mq;
-  mq.push(1);
-  mq.push(2);
-  mq.push(3);
-  cout << "front of queue: " << mq.front() << endl;
-  StackSet<int> stackset;
-  stackset.push(1);
-  stackset.push(2);
-  stackset.push(3);
-  cout << "top of stackset: " << stackset.top() << endl;
-  Stack<int> mystack;
-  mystack.push(1);
-  mystack.push(2);
-  mystack.push(3);
-  cout << "top of stack: " << mystack.top() << endl;
-  MaxStack_2<int> mxs;
-  mxs.push(1);
-  mxs.push(2);
-  mxs.push(3);
-  mxs.pop();
-  cout << "top of stack: " << mxs.top() << endl;
-  cout << "max of stack: " << mxs.max() << endl;
+  // List<int> testlist;
+  // testlist.push_back(1);
+  // testlist.push_back(2);
+  // testlist.push_back(3);
+  // testlist.push_back(4);
+  // testlist.push_back(5);
+  // testlist.push_back(5);
+  // testlist.push_back(5);
+  // testlist.push_back(5);
+  // testlist.push_back(6);
+  // testlist.print();
+  // cout << "size of list: " << testlist.size() << ", " << testlist.size_recursive_1() << ", " << testlist.size_recursive_2() << ", " << testlist.size_iterative() << endl;
+  // testlist.remove_duplicates();
+  // testlist.print();
+  // cout << "median: " << testlist.median() << endl;
 
-  MaxQueue<int> mxq;
-  mxq.push(1);
-  mxq.push(3);
-  mxq.push(5);
-  mxq.push(2);
-  mxq.push(2);
-  cout << "max of queue: " << mxq.max() << endl;
+  // CircularVector<int> mv(16);
+  // Queue<int> myqueue(mv);
+  // myqueue.push(1);
+  // myqueue.push(2);
+  // myqueue.push(3);
+  // cout << "front of queue: " << myqueue.front() << endl;
+  // //  QueueTwoStacks<int> mq;
+  // //  Queue<int,List<int> > mq;
+  // Queue<int,CircularVector<int> > mq;
+  // mq.push(1);
+  // mq.push(2);
+  // mq.push(3);
+  // cout << "front of queue: " << mq.front() << endl;
+  // StackSet<int> stackset;
+  // stackset.push(1);
+  // stackset.push(2);
+  // stackset.push(3);
+  // cout << "top of stackset: " << stackset.top() << endl;
+  // Stack<int> mystack;
+  // mystack.push(1);
+  // mystack.push(2);
+  // mystack.push(3);
+  // cout << "top of stack: " << mystack.top() << endl;
+  // MaxStack_2<int> mxs;
+  // mxs.push(1);
+  // mxs.push(2);
+  // mxs.push(3);
+  // mxs.pop();
+  // cout << "top of stack: " << mxs.top() << endl;
+  // cout << "max of stack: " << mxs.max() << endl;
 
-  Stack<int> mixedstack;
-  mixedstack.push(6);
-  mixedstack.push(5);
-  mixedstack.push(7);
-  mixedstack.push(4);
-  mixedstack.push(3);
-  mixedstack.push(0);
-  mixedstack.push(9);
-  mixedstack.push(1);
-  mixedstack.push(2);
-  auto sortedstack = stacksort_iterative(mixedstack);
-  while (!sortedstack.empty()) { cout << sortedstack.top() << " "; sortedstack.pop(); }
-  cout << endl;
+  // MaxQueue<int> mxq;
+  // mxq.push(1);
+  // mxq.push(3);
+  // mxq.push(5);
+  // mxq.push(2);
+  // mxq.push(2);
+  // cout << "max of queue: " << mxq.max() << endl;
 
-  LRUCache<string,vector<string>,32> cache;
-  cache.insert("testing", vector<string> {"one", "two", "three"});
-  vector<string> cache_val;
-  cout << cache.lookup("testing", &cache_val) << endl;
-  cout << cache_val.front() << endl;
-  cout << cache.lookup("testing1", &cache_val) << endl;
+  // Stack<int> mixedstack;
+  // mixedstack.push(6);
+  // mixedstack.push(5);
+  // mixedstack.push(7);
+  // mixedstack.push(4);
+  // mixedstack.push(3);
+  // mixedstack.push(0);
+  // mixedstack.push(9);
+  // mixedstack.push(1);
+  // mixedstack.push(2);
+  // auto sortedstack = stacksort_iterative(mixedstack);
+  // while (!sortedstack.empty()) { cout << sortedstack.top() << " "; sortedstack.pop(); }
+  // cout << endl;
 
-  vector<int> to_remove {1, 5, 4, 6, 1, 2, 4, 1, 4, 6, 7, 2, 3, 2, 4, 5, 5, 5, 2, 3, 4, 2, 3, 4, 3, 2, 2, 2, 2, 2, 3, 5, 2, 3, 2, 1};
-  vector<int> to_remove2(to_remove);
-  auto it = my_remove(to_remove.begin(), to_remove.end(), 2);
-  auto it2 = std::remove(to_remove2.begin(), to_remove2.end(), 2);
-  for (auto i = to_remove.begin(); i != it; ++i) {
-    cout << *i << " ";
-  }
-  cout << endl;
-  for (auto i = to_remove2.begin(); i != it2; ++i) {
-    cout << *i << " ";
-  }
-  cout << endl;
+  // LRUCache<string,vector<string>,32> cache;
+  // cache.insert("testing", vector<string> {"one", "two", "three"});
+  // vector<string> cache_val;
+  // cout << cache.lookup("testing", &cache_val) << endl;
+  // cout << cache_val.front() << endl;
+  // cout << cache.lookup("testing1", &cache_val) << endl;
 
-  int bst_data[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
-  BST<int> my_bst(bst_data, 16);
-  my_bst.print();
+  // vector<int> to_remove {1, 5, 4, 6, 1, 2, 4, 1, 4, 6, 7, 2, 3, 2, 4, 5, 5, 5, 2, 3, 4, 2, 3, 4, 3, 2, 2, 2, 2, 2, 3, 5, 2, 3, 2, 1};
+  // vector<int> to_remove2(to_remove);
+  // auto it = my_remove(to_remove.begin(), to_remove.end(), 2);
+  // auto it2 = std::remove(to_remove2.begin(), to_remove2.end(), 2);
+  // for (auto i = to_remove.begin(); i != it; ++i) {
+  //   cout << *i << " ";
+  // }
+  // cout << endl;
+  // for (auto i = to_remove2.begin(); i != it2; ++i) {
+  //   cout << *i << " ";
+  // }
+  // cout << endl;
 
-  vector<int> inorder = my_bst.inorder_successor();
-  cout << "inorder with successors" << endl;
-  for (auto e : inorder) {
-    cout << e << " ";
-  }
-  cout << endl;
+  // int bst_data[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+  // BST<int> my_bst(bst_data, 16);
+  // my_bst.print();
 
-  vector<int> step_ways {1, 2, 3};
-  cout << "ways 1: " << count_permutations_1(13) << endl;
-  cout << "ways 2: " << count_permutations_2(13, step_ways) << endl;
-  cout << "ways 3: " << count_permutations_3(13, step_ways) << endl;
-  cout << "ways 4: " << count_combinations(13, step_ways) << endl;
+  // vector<int> inorder = my_bst.inorder_successor();
+  // cout << "inorder with successors" << endl;
+  // for (auto e : inorder) {
+  //   cout << e << " ";
+  // }
+  // cout << endl;
+
+  // vector<int> step_ways {1, 2, 3};
+  // cout << "ways 1: " << count_permutations_1(13) << endl;
+  // cout << "ways 2: " << count_permutations_2(13, step_ways) << endl;
+  // cout << "ways 3: " << count_permutations_3(13, step_ways) << endl;
+  // cout << "ways 4: " << count_combinations(13, step_ways) << endl;
 
   // Vertex<char,int> gv1('F');
   // Vertex<char,int> gv2('B');
@@ -830,47 +839,47 @@ int App::exec()
   // bool ir = is_reachable_bfs(&gv1, &gv9);
   // cout << "is reachable: " << ir << endl;
 
-  vector<vector<int> > cv = combinations(4, 2);
-  for (auto v : cv) {
-    for (auto e : v) {
-      cout << e << " ";
-    }
-    cout << endl;
-  }
+  // vector<vector<int> > cv = combinations(4, 2);
+  // for (auto v : cv) {
+  //   for (auto e : v) {
+  //     cout << e << " ";
+  //   }
+  //   cout << endl;
+  // }
 
-  string ptest = "cat";
-  vector<string> ps = permutations(ptest);
-  for (auto s : ps) {
-    cout << s << endl;
-  }
+  // string ptest = "cat";
+  // vector<string> ps = permutations(ptest);
+  // for (auto s : ps) {
+  //   cout << s << endl;
+  // }
 
-  vector<string> vps = valid_parenthesis(4);
-  for (auto p : vps) {
-    cout << p << endl;
-  }
+  // vector<string> vps = valid_parenthesis(4);
+  // for (auto p : vps) {
+  //   cout << p << endl;
+  // }
 
-  cout << "number of coin combinations: " << coin_combinations(10) << endl;
+  // cout << "number of coin combinations: " << coin_combinations(10) << endl;
 
-  string pndigits = "231";
-  vector<string> pnl = phonenumber_letters(pndigits);
-  for (auto s : pnl) {
-    cout << s << endl;
-  }
+  // string pndigits = "231";
+  // vector<string> pnl = phonenumber_letters(pndigits);
+  // for (auto s : pnl) {
+  //   cout << s << endl;
+  // }
 
-  string myfile = "input/file1.txt";
-  string output = tail_2(myfile, 4);
-  cout << output;
+  // string myfile = "input/file1.txt";
+  // string output = tail_2(myfile, 4);
+  // cout << output;
 
-  const string estring = "aaaaabbccccddeefffgghhhhh";
-  cout << run_length_encode(estring) << endl;
-  cout << compress_string(estring) << endl;
+  // const string estring = "aaaaabbccccddeefffgghhhhh";
+  // cout << run_length_encode(estring) << endl;
+  // cout << compress_string(estring) << endl;
 
-  const string rntest_1 = "LIX";
-  cout << "value of " << rntest_1 << " = " << roman_to_int_2(rntest_1) << endl;
-  const string rntest_2 = "XXXXXIIIIIIIII";
-  cout << "value of " << rntest_2 << " = " << roman_to_int_2(rntest_2) << endl;
-  const string rntest_3 = "LVIIII";
-  cout << "value of " << rntest_3 << " = " << roman_to_int_2(rntest_3) << endl;
+  // const string rntest_1 = "LIX";
+  // cout << "value of " << rntest_1 << " = " << roman_to_int_2(rntest_1) << endl;
+  // const string rntest_2 = "XXXXXIIIIIIIII";
+  // cout << "value of " << rntest_2 << " = " << roman_to_int_2(rntest_2) << endl;
+  // const string rntest_3 = "LVIIII";
+  // cout << "value of " << rntest_3 << " = " << roman_to_int_2(rntest_3) << endl;
 
   vector<string> pres = phonenumber_letters("23");
   cout << pres.size() << endl;
