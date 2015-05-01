@@ -1,8 +1,10 @@
 #include <vector>
 #include <string>
+#include <array>
 
 using std::vector;
 using std::string;
+using std::array;
 
 int unit_test_func(int x);
 

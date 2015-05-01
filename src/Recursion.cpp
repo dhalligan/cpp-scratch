@@ -106,24 +106,25 @@ int coin_combinations(int n)
   return sums[n];
 }
 
-void phonenumber_helper(const string& digits, const vector<string>& encoding, int i, string* ans, vector<string>* res)
+void phonenumber_helper(const string& digits, const array<string,10>& encoding, string& ans, vector<string>& result)
 {
-  if (i == digits.size()) {
-    res->emplace_back(*ans);
+  if (ans.size() == digits.size()) {
+    result.emplace_back(ans);
     return;
   }
-  for (const char c : encoding[digits[i] - '0']) {
-    ans->push_back(c);
-    phonenumber_helper(digits, encoding, i + 1, ans, res);
-    ans->pop_back();
+  for (const char& c : encoding[digits[ans.size()] - '0']) {
+    ans.push_back(c);
+    phonenumber_helper(digits, encoding, ans, result);
+    ans.pop_back();
   }
 }
 
 vector<string> phonenumber_letters(const string& digits)
 {
+  if (digits.empty()) { return {}; }
+  const array<string,10> encoding {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
   string ans;
   vector<string> result;
-  const vector<string> encoding {"0", "1", "2abc", "3def", "4ghi", "5jkl", "6mno", "7pqrs", "8tuv", "9wxyz"};
-  phonenumber_helper(digits, encoding, 0, &ans, &result);
+  phonenumber_helper(digits, encoding, ans, result);
   return result;
 }

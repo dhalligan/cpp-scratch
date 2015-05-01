@@ -872,7 +872,10 @@ int App::exec()
   const string rntest_3 = "LVIIII";
   cout << "value of " << rntest_3 << " = " << roman_to_int_2(rntest_3) << endl;
 
-
+  vector<string> pres = phonenumber_letters("23");
+  cout << pres.size() << endl;
+  for (auto c : pres) { cout << c << " "; }
+  cout << endl;
   
 }
 
