@@ -75,5 +75,6 @@ namespace StringUtil {
   string run_length_encode(const string& s);
   int roman_to_int_1(const string& s);
   int roman_to_int_2(const string& s);
+  vector<string> group_anagrams(vector<string>& strs);
 
 }

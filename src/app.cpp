@@ -885,6 +885,11 @@ int App::exec()
   cout << pres.size() << endl;
   for (auto c : pres) { cout << c << " "; }
   cout << endl;
+
+  vector<string> a_words {"cat", "tac", "lisp", "mammoth", "slip", "risk", "act", "kris"};
+  vector<string> anagrams = group_anagrams(a_words);
+  for (auto c : anagrams) { cout << c << "  "; }
+  cout << endl;  
   
 }
 

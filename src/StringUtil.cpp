@@ -364,6 +364,25 @@ namespace StringUtil {
 
   }
 
+  vector<string> group_anagrams(vector<string>& strs)
+  {
+    vector<string> result;
+    unordered_map<string, vector<string> > mp;
 
+    for (const string& s : strs) {
+      string sorted_s(s);
+      sort(sorted_s.begin(), sorted_s.end());
+      mp[sorted_s].emplace_back(s);
+    }
+
+    for (auto& p : mp) {
+      if (p.second.size() > 1) {
+	for (auto& s : p.second) {
+	  result.emplace_back(s);
+	}
+      }
+    }
+    return result;
+  }
 
 }
