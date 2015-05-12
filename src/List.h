@@ -279,7 +279,7 @@ T List<T>::median_circular_impl(const shared_ptr<ListNode<T> >& node)
 template <class T>
 void List<T>::remove_impl(const shared_ptr<ListNode<T> >& node, const T& e)
 {
-  while (node && node->data != e) { node = node->next; }
+  while (node && node->data == e) { node = node->next; }
   auto curr = node->next, prev = node;
 
   while (curr) {
