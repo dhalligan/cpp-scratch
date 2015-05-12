@@ -890,6 +890,11 @@ int App::exec()
   vector<string> anagrams = group_anagrams(a_words);
   for (auto c : anagrams) { cout << c << "  "; }
   cout << endl;  
+
+  //  string exspace = "   this   string     has    extra                      whitespace     ";
+  string exspace = " 1 ";
+  reverse_words(exspace);
+  cout << exspace << "e" << endl;
   
 }
 
@@ -2183,15 +2188,6 @@ std::tuple<vector<int>,vector<int>,vector<int> > union_intersection_difference(v
   for_each (d_hash.cbegin(), d_hash.cend(), [&d_result] (std::pair<int,int> p) {d_result.push_back(p.first);} );
 
   return std::tuple<vector<int>,vector<int>,vector<int> >(u_result, i_result, d_result);
-}
-
-void merge_two_sorted_arrays(int A[], int m, int B[], int n)
-{
-  int a = m - 1, b = n - 1, tar = m + n - 1;
-  while (a >= 0 && b >= 0)
-    A[tar--] = A[a] > B[b] ? A[a--] : B[b--];
-  while (b >= 0)
-    A[tar--] = B[b--];
 }
 
 void count_occurrences(string& s)

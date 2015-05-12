@@ -76,5 +76,6 @@ namespace StringUtil {
   int roman_to_int_1(const string& s);
   int roman_to_int_2(const string& s);
   vector<string> group_anagrams(vector<string>& strs);
-
+  bool isomorphic_strings(const string& s, const string& t);
+  void reverse_words(string& s);
 }

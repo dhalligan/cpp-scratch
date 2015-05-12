@@ -469,7 +469,6 @@ vector<int> symmetric_difference_sorted_arrays(vector<int> A, vector<int> B);
 
 std::tuple<vector<int>,vector<int>,vector<int> > union_intersection_difference(vector<int>& A, vector<int>& B);
 
-void merge_two_sorted_arrays(int A[], int m, int B[], int n);
 void count_occurrences(string& s);
 
 void eliminate_duplicates(vector<int>& v);

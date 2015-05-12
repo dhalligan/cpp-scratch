@@ -55,6 +55,9 @@ public:
   bool palindromic() {
     return palindromic_impl(head_);
   }
+  void remove(const T& e) {
+    remove_impl(head_, e);
+  }
   void unique() {
     unique_impl(head_);
   }
@@ -88,6 +91,7 @@ private:
   T median_impl(const shared_ptr<ListNode<T> >& node);
   T median_circular_impl(const shared_ptr<ListNode<T> >& node);
   bool palindromic_impl(shared_ptr<ListNode<T> >& node);
+  void remove_impl(const shared_ptr<ListNode<T> >& node, const T& e);
   void unique_impl(const shared_ptr<ListNode<T> >& node);
   void remove_duplicates_impl(const shared_ptr<ListNode<T> >& node);
   size_t size_recursive_impl_1(const shared_ptr<ListNode<T> >& node) const;
@@ -265,11 +269,28 @@ T List<T>::median_circular_impl(const shared_ptr<ListNode<T> >& node)
       start = curr;
     }
   } while (curr != node);
-  
+
   for (size_t i = 0; i < length / 2; ++i) {
     start = start->next;
   }
   return length & 1 ? start->data : 0.5 * (start->data + start->next->data);
+}
+
+template <class T>
+void List<T>::remove_impl(const shared_ptr<ListNode<T> >& node, const T& e)
+{
+  while (node && node->data != e) { node = node->next; }
+  auto curr = node->next, prev = node;
+
+  while (curr) {
+    if (curr->data != e) {
+      prev->next = curr;
+      prev = curr;
+    }
+    curr = curr->next;
+  }
+  // The last group of nodes with equal data
+  prev->next = nullptr;
 }
 
 template <class T>
@@ -283,8 +304,8 @@ void List<T>::unique_impl(const shared_ptr<ListNode<T> >& node)
     }
     ahead = ahead->next;
   }
-  // If curr isn't the last node, the last group of nodes had equal data
-  if (curr->next) { curr->next = nullptr; }
+  // The last group of nodes with equal data
+  curr->next = nullptr;
 }
 
 template <class T>
@@ -336,7 +357,7 @@ CListNode<T>* add_two_numbers(CListNode<T> *l1, CListNode<T> *l2) {
   if (!l1) { return l2; }
   if (!l2) { return l1; }
 
-  CListNode<T>* head = new CListNode<T>(0); 
+  CListNode<T>* head = new CListNode<T>(0);
   CListNode<T>* curr = head;
   int carry = 0;
   while (l1 && l2) {
@@ -367,7 +388,7 @@ CListNode<T>* add_two_numbers(CListNode<T> *l1, CListNode<T> *l2) {
     curr->next = new CListNode<T>(carry);
   }
 
-  return head->next;    
+  return head->next;
 }
 
 template <class T>

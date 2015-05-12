@@ -385,4 +385,45 @@ namespace StringUtil {
     return result;
   }
 
+  bool isomorphic_strings(const string& s, const string& t)
+  {
+    if (s.size() != t.size()) { return false; }
+    unordered_map<char,char> mp_f, mp_r;
+    for (size_t i = 0; i < s.size(); ++i) {
+      char c = s[i], d = t[i];
+      if (mp_f.find(c) != mp_f.cend()) {
+	if (mp_f[c] != d) { return false; }
+      } else if (mp_r.find(d) != mp_r.cend()) {
+	if (mp_r[d] != c) { return false; }
+      } else {
+	mp_f[c] = d, mp_r[d] = c;
+      }
+    }
+    return true;
+  }
+
+  void reverse_words(string& s)
+  {
+    const string whitespace = " \t";
+    auto i = s.find_first_not_of(whitespace), j = s.find_last_not_of(whitespace);
+    if (i == string::npos) { s.replace(0, s.size(), ""); return; }
+    s = s.substr(i, j - i + 1);
+
+    i = s.find_first_of(whitespace);
+    while (i != string::npos) {
+      j = s.find_first_not_of(whitespace, i);
+      s.replace(i, j - i, " ");
+      i = s.find_first_of(whitespace, i + 1);
+    }
+
+    i = 0, j = 0;
+    while (i != string::npos && j != string::npos) {
+      j = s.find_first_of(whitespace, i);
+      j == string::npos ? reverse(next(s.begin(), i), s.end()) : reverse(next(s.begin(), i), next(s.begin(), j));
+      i = s.find_first_not_of(whitespace, j);
+    }
+
+  }
+
+
 }
