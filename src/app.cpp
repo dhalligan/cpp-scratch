@@ -895,6 +895,11 @@ int App::exec()
   string exspace = " 1 ";
   reverse_words(exspace);
   cout << exspace << "e" << endl;
+
+  cout << look_and_say(1) << endl;
+  cout << look_and_say(2) << endl;
+  cout << look_and_say(3) << endl;
+  cout << look_and_say(4) << endl;
   
 }
 

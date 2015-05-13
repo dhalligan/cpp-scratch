@@ -425,5 +425,28 @@ namespace StringUtil {
 
   }
 
+  string look_and_say(int n)
+  {
+    string result = "1";
+    for (int i = 1; i < n; ++i) {
+      string next;
+      stringstream nextss;
+      char u = result.front();
+      int count = 0;
+      for (const char& c : result) {
+	if (count == 0) {
+	  u = c, count = 1;
+	} else if (u != c) {
+	  nextss << count << u;
+	  u = c, count = 1;
+	} else {
+	  count++;
+	}
+      }
+      if (count != 0) { nextss << count << u; }
+      result = nextss.str();
+    }
+    return result;
+  }
 
 }

@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include "Algorithm.h"
 
@@ -25,6 +26,7 @@ using std::endl;
 using std::ifstream;
 using std::fstream;
 using std::ios;
+using std::stringstream;
 
 namespace StringUtil {
 
@@ -78,4 +80,5 @@ namespace StringUtil {
   vector<string> group_anagrams(vector<string>& strs);
   bool isomorphic_strings(const string& s, const string& t);
   void reverse_words(string& s);
+  string look_and_say(int n);
 }
