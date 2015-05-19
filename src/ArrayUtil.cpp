@@ -1,5 +1,19 @@
 #include "ArrayUtil.h"
 
+int binary_search(const vector<int>& A, int t)
+{
+  int l = 0, u = A.size() - 1, r = -1;
+  while (l <= u) {
+    int m = l + (u - l) / 2;
+    if (A[m] >= t) {
+      r = m, u = m - 1;
+    } else {
+      l = m + 1;
+    }
+  }
+  return r;
+}
+
 int majority_element(const vector<int>& A)
 {
   int count = 0, cand = A.front();
@@ -46,7 +60,7 @@ vector<int> two_sum(const vector<int>& vec, int target)
 vector<vector<int> > three_sum(vector<int> &num) {
   if (num.size() < 3) { return {}; }
   sort(num.begin(), num.end());
-  vector<vector<int> > result; 
+  vector<vector<int> > result;
   int i = 0;
   while (i < num.size() - 2) {
     int target = -num[i];
@@ -54,13 +68,13 @@ vector<vector<int> > three_sum(vector<int> &num) {
     while (j < k) {
       int value = num[j] + num[k];
       if (value == target) {
-  	result.emplace_back(vector<int>{num[i], num[j], num[k]});
-  	do { j++; } while (num[j] == num[j - 1] && j < k);
-  	do { k--; } while (num[k] == num[k + 1] && j < k);
+	result.emplace_back(vector<int>{num[i], num[j], num[k]});
+	do { j++; } while (num[j] == num[j - 1] && j < k);
+	do { k--; } while (num[k] == num[k + 1] && j < k);
       } else if (value < target) {
-  	do { j++; } while (num[j] == num[j - 1] && j < k);
+	do { j++; } while (num[j] == num[j - 1] && j < k);
       } else {
-  	do { k--; } while (num[k] == num[k + 1] && j < k);
+	do { k--; } while (num[k] == num[k + 1] && j < k);
       }
     }
     do { i++; } while (num[i] == num[i-1] && i < num.size() - 2);
@@ -160,4 +174,3 @@ int water_tapped(const vector<int>& A)
 
   return sum;
 }
-
