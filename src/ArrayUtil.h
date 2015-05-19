@@ -12,6 +12,7 @@ using std::max;
 using std::min;
 
 int binary_search(const vector<int>& A, int t);
+pair<int, int> binary_search_2d(const vector<vector<int> >& A, int t);
 int majority_element(const vector<int>& A);
 vector<int> two_sum(const vector<int>& vec, int target);
 bool two_sum_sorted(const vector<int>& A, int k);

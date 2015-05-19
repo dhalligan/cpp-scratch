@@ -5,13 +5,41 @@ int binary_search(const vector<int>& A, int t)
   int l = 0, u = A.size() - 1, r = -1;
   while (l <= u) {
     int m = l + (u - l) / 2;
-    if (A[m] >= t) {
+    if (A[m] == t) {
       r = m, u = m - 1;
+    } else if (A[m] > t) {
+      u = m - 1;
     } else {
       l = m + 1;
     }
   }
   return r;
+}
+
+pair<int, int> binary_search_2d(const vector<vector<int> >& A, int t)
+{
+  int l = 0, u = A.size() - 1, r = -1;
+  while (l <= u) {
+    int m = l + (u - l) / 2;
+    if (A[0][m] <= t) {
+      r = m, l = m + 1;
+    } else {
+      u = m - 1;
+    }
+  }
+  if (r == -1) { return {-1, -1}; };
+  l = 0, u = A.front().size() - 1;
+  while (l <= u) {
+    int m = l + (u - l) / 2;
+    if (A[r][m] < t) {
+      l = m + 1;
+    } else if (A[r][m] == t) {
+      return {r, m};
+    } else {
+      u = m - 1;
+    }
+  }
+  return {-1, -1};
 }
 
 int majority_element(const vector<int>& A)
