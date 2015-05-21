@@ -128,3 +128,34 @@ vector<string> phonenumber_letters(const string& digits)
   phonenumber_helper(digits, encoding, ans, result);
   return result;
 }
+
+bool feasible(const vector<vector<char> >& board, const array<int, 2>& c)
+{
+  return 0 <= c[0] && c[0] < board.size() && 0 <= c[1] && c[1] < board.front().size() && board[c[0]][c[1]] != ' ';
+}
+
+bool word_search_dfs(vector<vector<char> >& board, const string& word, const array<int, 2>& c, int k)
+{
+  int i = c[0], j = c[1];
+  if (board[i][j] != word[k]) { return false; }
+  if (k == word.size() - 1) { return true; }
+
+  char letter = word[k];
+  board[i][j] = ' ';
+  const array<array<int, 2>, 4> next {{ {{i + 1, j}}, {{i, j + 1}}, {{i - 1, j}}, {{i, j - 1}} }};
+  for (const auto& n : next) {
+    if (feasible(board, n) && word_search_dfs(board, word, n, k + 1)) { return true; }
+  }
+  board[i][j] = letter;
+  return false;
+}
+
+bool word_search(vector<vector<char> >& board, string word)
+{
+  for (int i = 0; i < board.size(); ++i) {
+    for (int j = 0; j < board.front().size(); ++j) {
+      if (word_search_dfs(board, word, array<int, 2> {{i, j}}, 0)) { return true; }
+    }
+  }
+  return false;
+}

@@ -24,6 +24,11 @@ TEST_CASE( "Phone number letters 1", "[phone_number_1]" ) {
   REQUIRE( phonenumber_letters("23") == result );
 }
 
+TEST_CASE( "Word search", "[word_search]") {
+  vector<vector<char> > word_board {{'A', 'B', 'C', 'D'}, {'E', 'F', 'G', 'H'}, {'I', 'J', 'K', 'L'}, {'M', 'N', 'O', 'P'}};
+  REQUIRE( word_search(word_board, "ABFJN") == true );
+}
+
 /*
  TEST(sanity_check) // Declares a test named "sanity_check"
  {

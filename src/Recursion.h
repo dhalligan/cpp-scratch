@@ -17,4 +17,6 @@ vector<string> valid_parenthesis(int n);
 int coin_combinations(int target);
 void phonenumber_helper(const string& digits, const vector<string>& encoding, int i, string* ans, vector<string>* res);
 vector<string> phonenumber_letters(const string& digits);
-
+bool feasible(const vector<vector<char> >& board, const array<int, 2>& c);
+bool word_search_dfs(vector<vector<char> >& board, const string& word, const array<int, 2>& c, int k);
+bool word_search(vector<vector<char> >& board, string word);
