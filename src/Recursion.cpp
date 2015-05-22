@@ -129,7 +129,7 @@ vector<string> phonenumber_letters(const string& digits)
   return result;
 }
 
-bool feasible(const vector<vector<char> >& board, const array<int, 2>& c)
+bool word_search_feasible(const vector<vector<char> >& board, const array<int, 2>& c)
 {
   return 0 <= c[0] && c[0] < board.size() && 0 <= c[1] && c[1] < board.front().size() && board[c[0]][c[1]] != ' ';
 }
@@ -144,7 +144,7 @@ bool word_search_dfs(vector<vector<char> >& board, const string& word, const arr
   board[i][j] = ' ';
   const array<array<int, 2>, 4> next {{ {{i + 1, j}}, {{i, j + 1}}, {{i - 1, j}}, {{i, j - 1}} }};
   for (const auto& n : next) {
-    if (feasible(board, n) && word_search_dfs(board, word, n, k + 1)) { return true; }
+    if (word_search_feasible(board, n) && word_search_dfs(board, word, n, k + 1)) { return true; }
   }
   board[i][j] = letter;
   return false;
@@ -215,7 +215,7 @@ void permutation_helper(vector<int>& S, int offset, vector<vector<int> >& result
   }
 }
 
-vector<vector<int> > print_permutations(vector<int>& S)
+vector<vector<int> > permutation(vector<int>& S)
 {
   vector<vector<int> > result;
   permutation_helper(S, 0, result);
