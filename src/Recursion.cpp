@@ -221,3 +221,11 @@ vector<vector<int> > permutation(vector<int>& S)
   permutation_helper(S, 0, result);
   return result;
 }
+
+vector<vector<int> > permutation_2(vector<int>& S)
+{
+  vector<vector<int> > result;
+  sort(S.begin(), S.end());
+  do { result.emplace_back(S); } while (next_permutation(S.begin(), S.end()));
+  return result;
+}

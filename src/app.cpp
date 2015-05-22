@@ -2431,14 +2431,6 @@ void move_tower_hanoi(int n)
   hanoi_transfer(n, pegs, 0, 1, 2);
 }
 
-vector<vector<int> > print_permutations2(vector<int>& A)
-{
-  vector<vector<int> > result;
-  sort(A.begin(), A.end());
-  do { result.emplace_back(A); } while (next_permutation(A.begin(), A.end()));
-  return result;
-}
-
 vector<std::unique_ptr<BinaryTreeNode<int> > > generate_all_binary_trees_helper(int start, int end)
 {
   vector<std::unique_ptr<BinaryTreeNode<int> > > result;

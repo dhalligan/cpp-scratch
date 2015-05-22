@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <array>
+#include <algorithm>
 
 using std::vector;
 using std::string;
@@ -27,3 +28,4 @@ void combination_helper(vector<int>& S, int offset, int k, vector<int>& subset, 
 void combination(vector<int>& S, int k);
 void permutation_helper(vector<int>& S, int offset, vector<vector<int> >& result);
 vector<vector<int> > permutation(vector<int>& S);
+vector<vector<int> > permutation_2(vector<int>& S);
