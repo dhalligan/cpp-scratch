@@ -5,6 +5,7 @@
 using std::vector;
 using std::string;
 using std::array;
+using std::swap;
 
 int unit_test_func(int x);
 
@@ -20,3 +21,7 @@ vector<string> phonenumber_letters(const string& digits);
 bool feasible(const vector<vector<char> >& board, const array<int, 2>& c);
 bool word_search_dfs(vector<vector<char> >& board, const string& word, const array<int, 2>& c, int k);
 bool word_search(vector<vector<char> >& board, string word);
+void powerset_helper(vector<int>& S, int offset, vector<int>& subset, vector<vector<int> >& result);
+void powerset(vector<int>& S);
+void combination_helper(vector<int>& S, int offset, int k, vector<int>& subset, vector<vector<int> >& result);
+void combination(vector<int>& S, int k);

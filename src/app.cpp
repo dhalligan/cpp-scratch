@@ -2431,54 +2431,12 @@ void move_tower_hanoi(int n)
   hanoi_transfer(n, pegs, 0, 1, 2);
 }
 
-void permutation_helper(vector<int>* A, size_t i, vector<vector<int> >* result)
-{
-  if (i == A->size()) {
-    result->emplace_back(*A);
-    return;
-  } else {
-    for (size_t j = i; j != A->size(); ++j) {
-      swap(A[i], A[j]);
-      permutation_helper(A, i+1, result);
-      swap(A[i], A[j]);
-    }
-  }
-}
-
-vector<vector<int> > print_permutations(vector<int>& A)
-{
-  vector<vector<int> > result;
-  permutation_helper(&A, 0, &result);
-  return result;
-}
-
 vector<vector<int> > print_permutations2(vector<int>& A)
 {
   vector<vector<int> > result;
   sort(A.begin(), A.end());
   do { result.emplace_back(A); } while (next_permutation(A.begin(), A.end()));
   return result;
-}
-
-void generate_powerset_helper(vector<int>& S, int m, vector<int>* subset)
-{
-  if (!subset->empty()) {
-    copy(subset->cbegin(), subset->cend()-1, std::ostream_iterator<int>(std::cout, ","));
-    std::cout << subset->back();
-  }
-  std::cout << std::endl;
-
-  for (int i = m; i != S.size(); ++i) {
-    subset->emplace_back(S[i]);
-    generate_powerset_helper(S, m + 1, subset);
-    subset->pop_back();
-  }
-}
-
-void generate_powerset(vector<int>& S)
-{
-  vector<int> subset;
-  generate_powerset_helper(S, 0, &subset);
 }
 
 vector<std::unique_ptr<BinaryTreeNode<int> > > generate_all_binary_trees_helper(int start, int end)

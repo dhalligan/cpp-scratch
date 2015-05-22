@@ -159,3 +159,65 @@ bool word_search(vector<vector<char> >& board, string word)
   }
   return false;
 }
+
+void powerset_helper(vector<int>& S, int offset, vector<int>& subset, vector<vector<int> >& result)
+{
+  if (!subset.empty()) {
+    result.emplace_back(subset);
+  }
+
+  for (int i = offset; i < S.size(); ++i) {
+    subset.emplace_back(S[i]);
+    powerset_helper(S, offset + 1, subset, result);
+    subset.pop_back();
+  }
+}
+
+void powerset(vector<int>& S)
+{
+  vector<int> subset;
+  vector<vector<int> > result;
+  powerset_helper(S, 0, subset, result);
+}
+
+void combination_helper(vector<int>& S, int offset, int k, vector<int>& subset, vector<vector<int> >& result)
+{
+  if (k == 0) {
+    result.emplace_back(subset);
+    return;
+  }
+
+  for (int i = offset; i < S.size(); ++i) {
+    subset.emplace_back(S[i]);
+    combination_helper(S, offset + 1, k - 1, subset, result);
+    subset.pop_back();
+  }
+}
+
+void combination(vector<int>& S, int k)
+{
+  vector<int> subset;
+  vector<vector<int> > result;
+  combination_helper(S, 0, k, subset, result);
+}
+
+void permutation_helper(vector<int>& S, int offset, vector<vector<int> >& result)
+{
+  if (offset == S.size()) {
+    result.emplace_back(S);
+    return;
+  } else {
+    for (int j = offset; j < S.size(); ++j) {
+      swap(S[offset], S[j]);
+      permutation_helper(S, offset + 1, result);
+      swap(S[offset], S[j]);
+    }
+  }
+}
+
+vector<vector<int> > print_permutations(vector<int>& S)
+{
+  vector<vector<int> > result;
+  permutation_helper(S, 0, result);
+  return result;
+}
