@@ -81,4 +81,6 @@ namespace StringUtil {
   bool isomorphic_strings(const string& s, const string& t);
   void reverse_words(string& s);
   string look_and_say(int n);
+  bool palindromic(std::string s);
+  void find_palindrome_anagram(string& word, const vector<string>& dictionary);
 }

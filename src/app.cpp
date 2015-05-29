@@ -104,7 +104,7 @@ int App::exec()
   for (auto i : my_vec) std::cout << i << ' ';
   std::cout << std::endl;
 
-  std::cout << "palindrome? " << palindromic("A man, a plan, a canal, Panama") << std::endl;
+  //  std::cout << "palindrome? " << palindromic("A man, a plan, a canal, Panama") << std::endl;
 
   //  std::cout << "1230 in base 10 is " << string_to_integer("-1230", 10) << std::endl;
   //  std::cout << "integer to string: " << integer_to_string(-123, 10) << std::endl;
@@ -223,7 +223,7 @@ int App::exec()
 
   std::vector<string> dictionary = {"Hitler", "did", "nothing", "wrong", "deified", "edified", "test"};
   std::string query = "edified";
-  find_palindrome_anagram(query, dictionary);
+  //  find_palindrome_anagram(query, dictionary);
 
   std::vector<int> sorted_a = {1, 1, 2, 3, 4, 5, 8,  9, 10, 11, 14, 15, 17, 19, 20};
   std::vector<int> sorted_b = {1, 2, 3, 6, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20};
@@ -598,7 +598,7 @@ int App::exec()
   mylist.print();
   mylist.reverse();
   mylist.print();
-  std::cout << "Palindromic? " << mylist.palindromic() << std::endl;
+  //  std::cout << "Palindromic? " << mylist.palindromic() << std::endl;
 
 
   auto ln0 = make_shared<ListNode<int> >();
@@ -1216,18 +1216,6 @@ int max_forward_diff_2(const std::vector<int>& v)
   }
   return max_sum;
 
-}
-
-bool palindromic(std::string s)
-{
-  auto first = s.begin();
-  auto last = s.end() - 1;
-  while ((first < last)) {
-    while ((first < last) && !isalnum(*first)) first++;
-    while ((first < last) && !isalnum(*last)) last--;
-    if (tolower(*first++) != tolower(*last--)) return false;
-  }
-  return true;
 }
 
 void remove_replace(std::string& s, char remove, char replace, char with)
@@ -2087,25 +2075,6 @@ void find_anagrams(const vector<string>& dictionary)
       std::cout << std::endl;
     }
   }
-}
-
-void find_palindrome_anagram(string& word, const vector<string>& dictionary)
-{
-  std::unordered_map<string, vector<string> > hash;
-  for (const string& s : dictionary) {
-    string sorted(s);
-    std::sort(sorted.begin(), sorted.end());
-    hash[sorted].emplace_back(s);
-  }
-
-  std::string sorted_word(word);
-  std::sort(sorted_word.begin(), sorted_word.end());
-  for (const string& s : hash[sorted_word]) {
-    if (palindromic(s)) {
-      std::cout << s << " " << std::endl;
-    }
-  }
-
 }
 
 bool anonymous_letter(const string& L, const string& M)

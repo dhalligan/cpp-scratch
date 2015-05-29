@@ -449,4 +449,35 @@ namespace StringUtil {
     return result;
   }
 
+  bool palindromic(std::string s)
+  {
+    auto first = s.begin();
+    auto last = s.end() - 1;
+    while ((first < last)) {
+      while ((first < last) && !isalnum(*first)) first++;
+      while ((first < last) && !isalnum(*last)) last--;
+      if (tolower(*first++) != tolower(*last--)) return false;
+    }
+    return true;
+  }
+  
+  void find_palindrome_anagram(string& word, const vector<string>& dictionary)
+  {
+    std::unordered_map<string, vector<string> > hash;
+    for (const string& s : dictionary) {
+      string sorted(s);
+      std::sort(sorted.begin(), sorted.end());
+      hash[sorted].emplace_back(s);
+    }
+    
+    std::string sorted_word(word);
+    std::sort(sorted_word.begin(), sorted_word.end());
+    for (const string& s : hash[sorted_word]) {
+      if (palindromic(s)) {
+	std::cout << s << " " << std::endl;
+      }
+    }
+    
+  }
+
 }
