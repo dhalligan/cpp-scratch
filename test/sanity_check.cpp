@@ -25,8 +25,9 @@ TEST_CASE( "Phone number letters 1", "[phone_number_1]" ) {
 }
 
 TEST_CASE( "Word search", "[word_search]") {
-  vector<vector<char> > word_board {{'A', 'B', 'C', 'D'}, {'E', 'F', 'G', 'H'}, {'I', 'J', 'K', 'L'}, {'M', 'N', 'O', 'P'}};
-  REQUIRE( word_search(word_board, "ABFJN") == true );
+  WordSearch ws;
+  vector<vector<char> > board {{'A', 'B', 'C', 'D'}, {'E', 'F', 'G', 'H'}, {'I', 'J', 'K', 'L'}, {'M', 'N', 'O', 'P'}};
+  REQUIRE( ws.search(board, "ABFJN") == true );
 }
 
 /*

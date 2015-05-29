@@ -129,12 +129,12 @@ vector<string> phonenumber_letters(const string& digits)
   return result;
 }
 
-bool word_search_feasible(const vector<vector<char> >& board, const array<int, 2>& c)
+bool WordSearch::feasible(const vector<vector<char> >& board, const array<int, 2>& c)
 {
   return 0 <= c[0] && c[0] < board.size() && 0 <= c[1] && c[1] < board.front().size() && board[c[0]][c[1]] != ' ';
 }
 
-bool word_search_dfs(vector<vector<char> >& board, const string& word, const array<int, 2>& c, int k)
+bool WordSearch::dfs(vector<vector<char> >& board, const string& word, const array<int, 2>& c, int k)
 {
   int i = c[0], j = c[1];
   if (board[i][j] != word[k]) { return false; }
@@ -144,23 +144,23 @@ bool word_search_dfs(vector<vector<char> >& board, const string& word, const arr
   board[i][j] = ' ';
   const array<array<int, 2>, 4> next {{ {{i + 1, j}}, {{i, j + 1}}, {{i - 1, j}}, {{i, j - 1}} }};
   for (const auto& n : next) {
-    if (word_search_feasible(board, n) && word_search_dfs(board, word, n, k + 1)) { return true; }
+    if (feasible(board, n) && dfs(board, word, n, k + 1)) { return true; }
   }
   board[i][j] = letter;
   return false;
 }
 
-bool word_search(vector<vector<char> >& board, string word)
+bool WordSearch::search(vector<vector<char> >& board, string word)
 {
   for (int i = 0; i < board.size(); ++i) {
     for (int j = 0; j < board.front().size(); ++j) {
-      if (word_search_dfs(board, word, array<int, 2> {{i, j}}, 0)) { return true; }
+      if (dfs(board, word, array<int, 2> {{i, j}}, 0)) { return true; }
     }
   }
   return false;
 }
 
-void powerset_helper(vector<int>& S, int offset, vector<int>& subset, vector<vector<int> >& result)
+void PowerSet::helper(vector<int>& S, int offset, vector<int>& subset, vector<vector<int> >& result)
 {
   if (!subset.empty()) {
     result.emplace_back(subset);
@@ -168,19 +168,19 @@ void powerset_helper(vector<int>& S, int offset, vector<int>& subset, vector<vec
 
   for (int i = offset; i < S.size(); ++i) {
     subset.emplace_back(S[i]);
-    powerset_helper(S, offset + 1, subset, result);
+    helper(S, offset + 1, subset, result);
     subset.pop_back();
   }
 }
 
-void powerset(vector<int>& S)
+void PowerSet::compute(vector<int>& S)
 {
   vector<int> subset;
   vector<vector<int> > result;
-  powerset_helper(S, 0, subset, result);
+  helper(S, 0, subset, result);
 }
 
-void combination_helper(vector<int>& S, int offset, int k, vector<int>& subset, vector<vector<int> >& result)
+void Combination::helper(vector<int>& S, int offset, int k, vector<int>& subset, vector<vector<int> >& result)
 {
   if (k == 0) {
     result.emplace_back(subset);
@@ -189,19 +189,19 @@ void combination_helper(vector<int>& S, int offset, int k, vector<int>& subset, 
 
   for (int i = offset; i < S.size(); ++i) {
     subset.emplace_back(S[i]);
-    combination_helper(S, offset + 1, k - 1, subset, result);
+    helper(S, offset + 1, k - 1, subset, result);
     subset.pop_back();
   }
 }
 
-void combination(vector<int>& S, int k)
+void Combination::compute(vector<int>& S, int k)
 {
   vector<int> subset;
   vector<vector<int> > result;
-  combination_helper(S, 0, k, subset, result);
+  helper(S, 0, k, subset, result);
 }
 
-void permutation_helper(vector<int>& S, int offset, vector<vector<int> >& result)
+void Permutation::helper(vector<int>& S, int offset, vector<vector<int> >& result)
 {
   if (offset == S.size()) {
     result.emplace_back(S);
@@ -209,20 +209,20 @@ void permutation_helper(vector<int>& S, int offset, vector<vector<int> >& result
   } else {
     for (int j = offset; j < S.size(); ++j) {
       swap(S[offset], S[j]);
-      permutation_helper(S, offset + 1, result);
+      helper(S, offset + 1, result);
       swap(S[offset], S[j]);
     }
   }
 }
 
-vector<vector<int> > permutation(vector<int>& S)
+vector<vector<int> > Permutation::compute(vector<int>& S)
 {
   vector<vector<int> > result;
-  permutation_helper(S, 0, result);
+  helper(S, 0, result);
   return result;
 }
 
-vector<vector<int> > permutation_2(vector<int>& S)
+vector<vector<int> > Permutation::compute_2(vector<int>& S)
 {
   vector<vector<int> > result;
   sort(S.begin(), S.end());

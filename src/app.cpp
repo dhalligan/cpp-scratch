@@ -901,9 +901,6 @@ int App::exec()
   cout << look_and_say(3) << endl;
   cout << look_and_say(4) << endl;
 
-  vector<vector<char> > word_board {{'A', 'B', 'C', 'D'}, {'E', 'F', 'G', 'H'}, {'I', 'J', 'K', 'L'}, {'M', 'N', 'O', 'P'}};
-  cout << "word search: " << word_search(word_board, "ABFJN") << endl;
-
 }
 
 // int string_to_integer(const std::string& s, const int base)

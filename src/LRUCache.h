@@ -44,6 +44,7 @@ void LRUCache<K, V, capacity>::insert(K key, V value)
 {
   auto it = cache_.find(key);
   if (it != cache_.cend()) {
+    it->second.second = value;
     move_to_front(it);
     return;
   }
