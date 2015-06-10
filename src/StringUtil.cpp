@@ -460,7 +460,7 @@ namespace StringUtil {
     }
     return true;
   }
-  
+
   void find_palindrome_anagram(string& word, const vector<string>& dictionary)
   {
     std::unordered_map<string, vector<string> > hash;
@@ -469,7 +469,7 @@ namespace StringUtil {
       std::sort(sorted.begin(), sorted.end());
       hash[sorted].emplace_back(s);
     }
-    
+
     std::string sorted_word(word);
     std::sort(sorted_word.begin(), sorted_word.end());
     for (const string& s : hash[sorted_word]) {
@@ -477,7 +477,24 @@ namespace StringUtil {
 	std::cout << s << " " << std::endl;
       }
     }
-    
+
+  }
+
+  int compare_versions(const string& version1, const string& version2)
+  {
+    auto i = version1.begin(), j = version2.begin();
+    while (i != version1.end() && j != version2.end()) {
+      auto i2 = find(i, version1.end(), '.');
+      auto j2 = find(j, version2.end(), '.');
+      int num1 = atoi(string(i, i2).c_str()), num2 = atoi(string(j, j2).c_str());
+      if (num1 > num2) { return 1; }
+      if (num1 < num2) { return -1; }
+      i = i2 == version1.end() ? version1.end() : next(i2);
+      j = j2 == version2.end() ? version2.end() : next(j2);
+    }
+    if (i != version1.end() && atoi(string(i, version1.end()).c_str()) != 0) { return 1; }
+    if (j != version2.end() && atoi(string(j, version2.end()).c_str()) != 0) { return -1; }
+    return 0;
   }
 
 }

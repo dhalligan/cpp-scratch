@@ -901,6 +901,9 @@ int App::exec()
   cout << look_and_say(3) << endl;
   cout << look_and_say(4) << endl;
 
+  string version1 = "01", version2 = "1";
+  cout << compare_versions(version1, version2) << endl;
+
 }
 
 // int string_to_integer(const std::string& s, const int base)

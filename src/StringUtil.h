@@ -27,6 +27,7 @@ using std::ifstream;
 using std::fstream;
 using std::ios;
 using std::stringstream;
+using std::next;
 
 namespace StringUtil {
 
@@ -83,4 +84,5 @@ namespace StringUtil {
   string look_and_say(int n);
   bool palindromic(std::string s);
   void find_palindrome_anagram(string& word, const vector<string>& dictionary);
+  int compare_versions(const string& version1, const string& version2);
 }
