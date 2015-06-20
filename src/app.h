@@ -143,7 +143,6 @@ struct TreeVertex {
   vector<pair<unique_ptr<TreeVertex<T> >, double> > edges;
 };
 
-
 class TournamentTree
 {
 public:

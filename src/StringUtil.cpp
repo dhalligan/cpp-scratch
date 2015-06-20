@@ -198,16 +198,12 @@ namespace StringUtil {
       first++;
     }
 
-    unsigned long long int result = 0, result_max = 0;
+    unsigned long long int result = 0;
     for ( ; isdigit(*first) && first != last; ++first) {
       result = 10 * result + *first - '0';
-      result_max = std::max(result_max, result);
+      if (result >= numeric_limits<int>::max() && sgn == 1) { return numeric_limits<int>::max(); }
+      if (result > numeric_limits<int>::max() && sgn == -1) { return numeric_limits<int>::min(); }
     }
-
-    if (result != result_max) { return numeric_limits<int>::max(); }
-    if (result >= numeric_limits<int>::max() && sgn == 1) { return numeric_limits<int>::max(); }
-    if (result > numeric_limits<int>::max() && sgn == -1) { return numeric_limits<int>::min(); }
-
     return sgn*result;
   }
 

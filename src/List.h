@@ -86,7 +86,7 @@ private:
   void delete_node(const shared_ptr<ListNode<T> >& node);
   void delete_next_node(const shared_ptr<ListNode<T> >& node);
   shared_ptr<ListNode<T> > kth_last(size_t k, const shared_ptr<ListNode<T> >& node);
-  void delete_kth_last(size_t k, const shared_ptr<ListNode<T> >& node);
+  shared_ptr<ListNode<T> > delete_kth_last(size_t k, const shared_ptr<ListNode<T> >& node);
   shared_ptr<ListNode<T> > find_cycle_impl(const shared_ptr<ListNode<T> >& node);
   T median_impl(const shared_ptr<ListNode<T> >& node);
   T median_circular_impl(const shared_ptr<ListNode<T> >& node);
@@ -209,19 +209,13 @@ shared_ptr<ListNode<T> > List<T>::kth_last(size_t k, const shared_ptr<ListNode<T
 }
 
 template <class T>
-void List<T>::delete_kth_last(size_t k, const shared_ptr<ListNode<T> >& node)
+shared_ptr<ListNode<T> > List<T>::delete_kth_last(size_t k, const shared_ptr<ListNode<T> >& node)
 {
-  bool last = (k == 1);
-  if (last && !node->next) { node = nullptr; return; }
-  if (last) { k = 2; }
-
-  auto curr = kth_last(k, node);
-
-  if (last) {
-    delete_next_node(curr);
-  } else {
-    delete_node(curr);
-  }
+  auto curr = node, prev = node, ahead = node;
+  while (k--) { ahead = ahead->next; }
+  while (ahead) { ahead = ahead->next, prev = curr, curr = curr->next; }
+  prev->next = prev == curr ? prev->next : curr->next;
+  return prev == curr ? node->next : node;
 }
 
 template <class T>
@@ -344,7 +338,6 @@ size_t List<T>::size_iterative_impl(const shared_ptr<ListNode<T> >& node) const
   while (curr) { count++; curr = curr->next; }
   return count;
 }
-
 
 template <class T>
 struct CListNode {
