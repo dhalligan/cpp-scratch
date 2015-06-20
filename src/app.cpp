@@ -904,6 +904,9 @@ int App::exec()
   string version1 = "01", version2 = "1";
   cout << compare_versions(version1, version2) << endl;
 
+  vector<vector<char> > v(9, vector<char>(9, '.'));
+  Sudoku s;
+
 }
 
 // int string_to_integer(const std::string& s, const int base)

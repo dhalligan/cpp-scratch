@@ -1,5 +1,15 @@
 #include "ArrayUtil.h"
 
+vector<int> random_vector(int n)
+{
+  if (n < 0) { return {}; }
+  Rand_int rnd {-100, 100};
+  vector<int> result(n);
+  for (int i = 0; i < n; ++i) {
+    result[i] = rnd();
+  }
+}
+
 int binary_search(const vector<int>& A, int t)
 {
   int l = 0, u = A.size() - 1, r = -1;
@@ -184,7 +194,7 @@ pair<int,pair<int,int> > water_trapped_two_indices(const vector<int>& A)
   return {max_trapped, {max_i, max_j}};
 }
 
-int water_tapped(const vector<int>& A)
+int water_trapped(const vector<int>& A)
 {
   int h_max = distance(A.begin(), max_element(A.begin(), A.end()));
 
@@ -201,4 +211,15 @@ int water_tapped(const vector<int>& A)
   }
 
   return sum;
+}
+
+// Kadane's algorithm explained in Programming Pearls
+int maximum_subarray(const vector<int>& A)
+{
+  int mx_end_here = 0, mx = numeric_limits<int>::min();
+  for (const int& a : A) {
+    mx_end_here = max(mx_end_here + a, a);
+    mx = max(mx, mx_end_here);
+  }
+  return mx;
 }

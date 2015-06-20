@@ -1,3 +1,6 @@
+#ifndef RANDOM_H
+#define RANDOM_H
+
 #include <random>
 
 using std::default_random_engine;
@@ -13,3 +16,5 @@ class Rand_int
   default_random_engine re;
   uniform_int_distribution<> dist;
 };
+
+#endif

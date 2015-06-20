@@ -46,6 +46,7 @@
 #include "ArrayUtil.h"
 #include "GraphUtil.h"
 #include "Recursion.h"
+#include "Sudoku.h"
 
 using std::shared_ptr;
 using std::unique_ptr;

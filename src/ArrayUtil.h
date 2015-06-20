@@ -2,6 +2,9 @@
 #include <algorithm>
 #include <unordered_map>
 #include <iostream>
+#include <limits>
+
+#include "Random.h"
 
 using std::vector;
 using std::unordered_map;
@@ -10,7 +13,9 @@ using std::endl;
 using std::pair;
 using std::max;
 using std::min;
+using std::numeric_limits;
 
+vector<int> random_vector(int n);
 int binary_search(const vector<int>& A, int t);
 pair<int, int> binary_search_2d(const vector<vector<int> >& A, int t);
 int majority_element(const vector<int>& A);
@@ -21,7 +26,8 @@ vector<vector<int> > three_sum(vector<int> &num);
 void merge_two_sorted_arrays_1(int A[], int m, int B[], int n);
 int start_city(const vector<int>& gas, const vector<int>& cost);
 pair<int,pair<int,int> > water_trapped_two_indices(const vector<int>& A);
-int water_tapped(const vector<int>& A);
+int water_trapped(const vector<int>& A);
+int maximum_subarray(const vector<int>& A);
 
 template <class T>
 int binary_search(const T& k, const vector<T>& A)
