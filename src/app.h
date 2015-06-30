@@ -47,6 +47,7 @@
 #include "GraphUtil.h"
 #include "Recursion.h"
 #include "Sudoku.h"
+#include "Matrix.h"
 
 using std::shared_ptr;
 using std::unique_ptr;

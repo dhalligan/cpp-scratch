@@ -1,6 +1,12 @@
 #ifndef SUDOKU_H
 #define SUDOKU_H
 
+#include <vector>
+#include <string>
+
+using std::vector;
+using std::string;
+
 class Sudoku
 {
 public:
@@ -20,7 +26,7 @@ public:
     for (int i = 0; i < 9; ++i) {
       for (int j = 0; j < 9; ++j) {
 	if (board[i][j] == '.') {
-	  std::string numbers = "123456789";
+	  string numbers = "123456789";
 	  for (const char& num : numbers) {
 	    if (check(board, i, j, num)) {
 	      board[i][j] = num;

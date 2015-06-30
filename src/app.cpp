@@ -907,6 +907,31 @@ int App::exec()
   vector<vector<char> > v(9, vector<char>(9, '.'));
   Sudoku s;
 
+  Matrix my_mat(3, 4, true);
+  cout << "Matrix size: " << my_mat.width() << ", " << my_mat.height() << endl;
+
+  Rand_int my_rand {0, 255};
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      my_mat.get_uint8(i, j) = my_rand();
+    }
+  }
+  vector<int> histogram = my_mat.histogram(8);
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 4; ++j) {
+      cout << "*";
+    }
+    cout << endl;
+  }
+
+  //  cout << "Entry 0, 0: " << my_mat(0, 0) << endl;
+
+  //  my_mat(0, 0) = 1;
+  //  cout << "Entry 0, 0: " << my_mat(0, 0) << endl;
+  //  cout << "Entry 4, 4: " << my_mat(4, 4) << endl;  
+  //  Matrix mat_2(my_mat);
+  //  cout << "Entry 0, 0: " << mat_2(0, 0) << endl;
+
 }
 
 // int string_to_integer(const std::string& s, const int base)
