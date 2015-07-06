@@ -30,7 +30,7 @@ public:
 
   // This only works for the uint8_t right now
   vector<int> histogram(int num_bins) const {
-    vector<int> result;
+    vector<int> result(num_bins);
     int range = 256;
     int bin_size = range / num_bins;
     for (const auto& r : data) {
