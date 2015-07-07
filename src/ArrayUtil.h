@@ -24,6 +24,7 @@ bool two_sum_sorted(const vector<int>& A, int k);
 bool three_sum_sorted(vector<int>& A, int k);
 vector<vector<int> > three_sum(vector<int> &num);
 void merge_two_sorted_arrays_1(int A[], int m, int B[], int n);
+void merge_two_sorted_arrays_2(int A[], int m, int B[], int n);
 int start_city(const vector<int>& gas, const vector<int>& cost);
 pair<int,pair<int,int> > water_trapped_two_indices(const vector<int>& A);
 int water_trapped(const vector<int>& A);

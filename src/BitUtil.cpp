@@ -123,3 +123,7 @@ int bitwise_and_range(int m, int n)
   x |= x >> 1, x |= x >> 2, x |= x >> 4, x |= x >> 8, x |= x >> 16;
   return m & ~x;
 }
+
+bool power_of_two(int n) {
+  return n > 0 && !(n & (n - 1));
+}

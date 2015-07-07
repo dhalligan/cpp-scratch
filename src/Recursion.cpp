@@ -106,7 +106,7 @@ int coin_combinations(int n)
   return sums[n];
 }
 
-void phonenumber_helper(const string& digits, const array<string,10>& encoding, string& ans, vector<string>& result)
+void PhoneNumber::helper(const string& digits, const array<string,10>& encoding, string& ans, vector<string>& result)
 {
   if (ans.size() == digits.size()) {
     result.emplace_back(ans);
@@ -114,18 +114,18 @@ void phonenumber_helper(const string& digits, const array<string,10>& encoding, 
   }
   for (const char& c : encoding[digits[ans.size()] - '0']) {
     ans.push_back(c);
-    phonenumber_helper(digits, encoding, ans, result);
+    helper(digits, encoding, ans, result);
     ans.pop_back();
   }
 }
 
-vector<string> phonenumber_letters(const string& digits)
+vector<string> PhoneNumber::compute(const string& digits)
 {
   if (digits.empty()) { return {}; }
   const array<string,10> encoding {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
   string ans;
   vector<string> result;
-  phonenumber_helper(digits, encoding, ans, result);
+  helper(digits, encoding, ans, result);
   return result;
 }
 

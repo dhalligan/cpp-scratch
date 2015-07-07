@@ -20,10 +20,21 @@ int coin_combinations(int target);
 void phonenumber_helper(const string& digits, const vector<string>& encoding, int i, string* ans, vector<string>* res);
 vector<string> phonenumber_letters(const string& digits);
 
+/*! \brief PhoneNumber computes possible encodings for a phone number
+ *
+ *  My detailed description
+ */
+class PhoneNumber
+{
+  void helper(const string& digits, const array<string,10>& encoding, string& ans, vector<string>& result);
+  vector<string> compute(const string& digits);
+};
+
+
 /*! \brief PowerSet computes the power set of a vector of ints
  *
  *  My detailed description
-*/
+ */
 class PowerSet
 {
   void helper(vector<int>& S, int offset, vector<int>& subset, vector<vector<int> >& result);
@@ -33,7 +44,7 @@ class PowerSet
 /*! \brief Combination computes combinations of a vector of ints
  *
  *  My detailed description
-*/
+ */
 class Combination
 {
   void helper(vector<int>& S, int offset, int k, vector<int>& subset, vector<vector<int> >& result);
@@ -43,7 +54,7 @@ class Combination
 /*! \brief Permutation computes permutations of a vector of ints
  *
  *  My detailed description
-*/
+ */
 class Permutation
 {
   void helper(vector<int>& S, int offset, vector<vector<int> >& result);
@@ -54,7 +65,7 @@ class Permutation
 /*! \brief WordSearch implements a depth first search for a word in a letter board
  *
  *  My detailed description
-*/
+ */
 class WordSearch
 {
 public:

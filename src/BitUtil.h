@@ -14,3 +14,4 @@ bool palindromic_integer_1(int n);
 bool palindromic_integer_2(int x);
 bool palindromic_integer_2(int x);
 int bitwise_and_range(int m, int n);
+bool power_of_two(int n);
