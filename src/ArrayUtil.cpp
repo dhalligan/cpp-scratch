@@ -71,30 +71,27 @@ int majority_element(const vector<int>& A)
 // two_sum returns the 1-based indices of two numbers in the vector vec adding up to target
 vector<int> two_sum(const vector<int>& vec, int target)
 {
-  vector<int> numbers(vec);
-  sort(numbers.begin(), numbers.end());
-  int i = 0, j = numbers.size() - 1;
+  vector<pair<int, int> > sorted_numbers;
+  for (int i = 0; i < vec.size(); ++i) {
+    sorted_numbers.emplace_back(vec[i], i);
+  }
+  sort(sorted_numbers.begin(), sorted_numbers.end());
 
+  int i = 0, j = sorted_numbers.size() - 1;
   while (i < j) {
-    int value = numbers[i] + numbers[j];
+    int value = sorted_numbers[i].first + sorted_numbers[j].first;
     if (value == target) {
-      int ii = 0, jj = 0;
-      for ( ; ii < vec.size(); ++ii) {
-	if (vec[ii] == numbers[i]) { break; }
-      }
-      for ( ; jj < vec.size(); ++jj) {
-	if (vec[jj] == numbers[j] && jj != ii ) { break; }
-      }
-      return {ii < jj ? ii + 1 : jj + 1, ii < jj ? jj + 1 : ii + 1};
+      return {min(sorted_numbers[i].second, sorted_numbers[j].second) + 1, max(sorted_numbers[i].second, sorted_numbers[j].second) + 1};
     } else if (value < target) {
-      do { i++; } while (numbers[i] == numbers[i - 1]);
+      do { i++; } while (vec[i] == vec[i - 1]);
     } else {
-      do { j--; } while (numbers[j] == numbers[j + 1]);
+      do { j--; } while (vec[j] == vec[j + 1]);
     }
   }
   return {0, 0};
 }
 
+// three_sum returns a vector of triples of numbers whose sum is zero
 vector<vector<int> > three_sum(vector<int> &num) {
   if (num.size() < 3) { return {}; }
   sort(num.begin(), num.end());
@@ -155,6 +152,15 @@ void merge_two_sorted_arrays_1(int A[], int m, int B[], int n)
   }
   while (b >= 0) {
     A[tar--] = B[b--];
+  }
+}
+
+// A has enough space to hold B at the end
+void merge_two_sorted_arrays_2(int A[], int m, int B[], int n)
+{
+  int a = m - 1, b = n - 1, tar = m + n - 1;
+  while (b >= 0) {
+    A[tar--] = a >= 0 && A[a] > B[b] ? A[a--] : B[b--];
   }
 }
 
