@@ -16,8 +16,6 @@ class CountPermutation
 {
 public:
   int compute(int k, vector<int>& score_ways);
-  int compute_recursive(int n);
-  int compute_memoize(int k, vector<int>& score_ways);
 };
 
 /*! \brief CountCombination computes the number of combinations of a set of objects that add up to a target value
@@ -89,7 +87,7 @@ class Permutation
 {
 public:
   vector<vector<int> > compute(vector<int>& S);
-  vector<vector<int> > compute_2(vector<int>& S);
+  vector<vector<int> > compute_stl(vector<int>& S);
 private:
   void helper(vector<int>& S, int offset, vector<vector<int> >& result);
 };

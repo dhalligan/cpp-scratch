@@ -1,33 +1,5 @@
 #include "Recursion.h"
 
-int CountPermutation::compute_recursive(int n)
-{
-  if (n < 0) { return 0; }
-  if (n == 0) { return 1; }
-
-  return
-    compute_recursive(n - 3) +
-    compute_recursive(n - 2) +
-    compute_recursive(n - 1);
-}
-
-int CountPermutation::compute_memoize(int k, vector<int>& score_ways)
-{
-  vector<int> permutations (k + 1, 0);
-  if (k < 0) { return 0; }
-  if (k == 0) { return 1; }
-
-  if (permutations[k] > -1) {
-    return permutations[k];
-  } else {
-    permutations[k] =
-      compute_memoize(k - 3, score_ways) +
-      compute_memoize(k - 2, score_ways) +
-      compute_memoize(k - 1, score_ways);
-    return permutations[k];
-  }
-}
-
 int CountPermutation::compute(int k, vector<int>& score_ways)
 {
   vector<int> permutations (k + 1, 0);
@@ -217,7 +189,7 @@ vector<vector<int> > Permutation::compute(vector<int>& S)
   return result;
 }
 
-vector<vector<int> > Permutation::compute_2(vector<int>& S)
+vector<vector<int> > Permutation::compute_stl(vector<int>& S)
 {
   vector<vector<int> > result;
   sort(S.begin(), S.end());

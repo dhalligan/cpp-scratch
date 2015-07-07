@@ -36,6 +36,10 @@ int App::exec()
     cout << endl;
   }
 
+  vector<int> score_ways {1, 2, 3};
+  CountPermutation cp;
+  cout << "cp: " << cp.compute(10, score_ways) << endl;
+
 }
 
 int ssDecodeColID(const std::string& s) {

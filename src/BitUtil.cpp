@@ -109,8 +109,7 @@ bool palindromic_integer_3(int x)
   int msb_shift = static_cast<int>(pow(10, num_digit - 1));
   while (x) {
     if (x / msb_shift != x % 10) { return false; }
-    x %= msb_shift;
-    x /= 10;
+    x %= msb_shift, x /= 10;
     msb_shift /= 100;
   }
 
@@ -119,7 +118,7 @@ bool palindromic_integer_3(int x)
 
 int bitwise_and_range(int m, int n)
 {
-  int x = m ^ n;
+  unsigned int x = m ^ n;
   x |= x >> 1, x |= x >> 2, x |= x >> 4, x |= x >> 8, x |= x >> 16;
   return m & ~x;
 }
