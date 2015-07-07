@@ -8,12 +8,28 @@ using std::string;
 using std::array;
 using std::swap;
 
-int unit_test_func(int x);
+/*! \brief CountPermutation computes the number of permutations of a set of objects that add up to a target value
+ *
+ * My detailed description
+ */
+class CountPermutation
+{
+public:
+  int compute(int k, vector<int>& score_ways);
+  int compute_recursive(int n);
+  int compute_memoize(int k, vector<int>& score_ways);
+};
 
-int count_permutations_1(int n);
-int count_permutations_2(int k, vector<int>& score_ways);
-int count_permutations_3(int k, vector<int>& score_ways);
-int count_combinations(int k, vector<int>& score_ways);
+/*! \brief CountCombination computes the number of combinations of a set of objects that add up to a target value
+ *
+ * My detailed description
+ */
+class CountCombination
+{
+public:
+  int compute(int k, vector<int>& score_ways);
+};
+
 int coin_combinations(int target);
 
 /*! \brief Parenthesis computes possible valid arrangements of parenthesis

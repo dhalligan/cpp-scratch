@@ -1,21 +1,17 @@
 #include "Recursion.h"
 
-int unit_test_func(int x) {
-  return 2 * x;
-}
-
-int count_permutations_1(int n)
+int CountPermutation::compute_recursive(int n)
 {
   if (n < 0) { return 0; }
   if (n == 0) { return 1; }
 
   return
-    count_permutations_1(n - 3) +
-    count_permutations_1(n - 2) +
-    count_permutations_1(n - 1);
+    compute_recursive(n - 3) +
+    compute_recursive(n - 2) +
+    compute_recursive(n - 1);
 }
 
-int count_permutations_2(int k, vector<int>& score_ways)
+int CountPermutation::compute_memoize(int k, vector<int>& score_ways)
 {
   vector<int> permutations (k + 1, 0);
   if (k < 0) { return 0; }
@@ -25,14 +21,14 @@ int count_permutations_2(int k, vector<int>& score_ways)
     return permutations[k];
   } else {
     permutations[k] =
-      count_permutations_2(k - 3, score_ways) +
-      count_permutations_2(k - 2, score_ways) +
-      count_permutations_2(k - 1, score_ways);
+      compute_memoize(k - 3, score_ways) +
+      compute_memoize(k - 2, score_ways) +
+      compute_memoize(k - 1, score_ways);
     return permutations[k];
   }
 }
 
-int count_permutations_3(int k, vector<int>& score_ways)
+int CountPermutation::compute(int k, vector<int>& score_ways)
 {
   vector<int> permutations (k + 1, 0);
   permutations[0] = 1;
@@ -46,7 +42,7 @@ int count_permutations_3(int k, vector<int>& score_ways)
   return permutations[k];
 }
 
-int count_combinations(int k, vector<int>& score_ways)
+int CountCombination::compute(int k, vector<int>& score_ways)
 {
   vector<int> combinations (k + 1, 0);
   combinations[0] = 1;

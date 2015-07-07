@@ -15,10 +15,6 @@ TEST_CASE("one equals one", "[one]") {
   REQUIRE( one == 1 );
 }
 
-TEST_CASE( "Coin combinations are computed", "[coin_combinations]" ) {
-  REQUIRE( unit_test_func(5) == 10 );
-}
-
 TEST_CASE( "Phone number letters 1", "[phone_number_1]" ) {
   vector<string> result {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
   PhoneNumber pn;
