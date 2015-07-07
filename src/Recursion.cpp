@@ -60,7 +60,7 @@ int count_combinations(int k, vector<int>& score_ways)
   return combinations[k];
 }
 
-void parenthesis_helper(int left, int right, string* ans, vector<string>* res)
+void Parenthesis::helper(int left, int right, string* ans, vector<string>* res)
 {
   if (left < 0 || right < left) { return; }
 
@@ -71,24 +71,23 @@ void parenthesis_helper(int left, int right, string* ans, vector<string>* res)
 
   if (left > 0) {
     ans->push_back('(');
-    parenthesis_helper(left - 1, right, ans, res);
+    helper(left - 1, right, ans, res);
     ans->pop_back();
   }
 
   if (right > 0) {
     ans->push_back(')');
-    parenthesis_helper(left, right - 1, ans, res);
+    helper(left, right - 1, ans, res);
     ans->pop_back();
   }
-
 }
 
-vector<string> valid_parenthesis(int n)
+vector<string> Parenthesis::compute(int n)
 {
   if (n == 0) { return vector<string>{}; }
   string ans;
   vector<string> result;
-  parenthesis_helper(n, n, &ans, &result);
+  helper(n, n, &ans, &result);
   return result;
 }
 

@@ -21,7 +21,8 @@ TEST_CASE( "Coin combinations are computed", "[coin_combinations]" ) {
 
 TEST_CASE( "Phone number letters 1", "[phone_number_1]" ) {
   vector<string> result {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
-  REQUIRE( phonenumber_letters("23") == result );
+  PhoneNumber pn;
+  REQUIRE( pn.compute("23") == result );
 }
 
 TEST_CASE( "Word search", "[word_search]") {
