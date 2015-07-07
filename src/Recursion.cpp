@@ -196,3 +196,34 @@ vector<vector<int> > Permutation::compute_stl(vector<int>& S)
   do { result.emplace_back(S); } while (next_permutation(S.begin(), S.end()));
   return result;
 }
+
+
+int Fibonacci::compute_dp(int n)
+{
+  array<int,2> x {{1, 1}};
+  for (int i = 2; i <= n; ++i) {
+    std::swap(x[0], x[1]);
+    x[1] += x[0];
+  }
+  return x[1];
+}
+
+int Fibonacci::compute(int n)
+{
+  return helper(n).second;
+}
+
+pair<int,int> Fibonacci::helper(int n)
+{
+  if (n == 0) {
+    return {0, 1};
+  } else {
+    pair<int,int> x = helper(n / 2);
+    pair<int,int> y = {x.first * (2 * x.second - x.first), x.first * x.first + x.second * x.second};
+    if (n & 1) {
+      return {y.second, y.first + y.second};
+    } else {
+      return y;
+    }
+  }
+}

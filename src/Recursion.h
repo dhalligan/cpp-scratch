@@ -7,6 +7,7 @@ using std::vector;
 using std::string;
 using std::array;
 using std::swap;
+using std::pair;
 
 /*! \brief CountPermutation computes the number of permutations of a set of objects that add up to a target value
  *
@@ -103,4 +104,18 @@ public:
 private:
   bool feasible(const vector<vector<char> >& board, const array<int, 2>& c);
   bool dfs(vector<vector<char> >& board, const string& word, const array<int, 2>& c, int k);
+};
+
+/*! \brief Fibonacci computes Fibonacci numbers
+ *
+ * My detailed description
+ */
+class Fibonacci
+{
+ public:
+  //  int compute(int n);
+  int compute_dp(int n);
+  int compute(int n);
+ private:
+  pair<int,int> helper(int n);
 };

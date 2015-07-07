@@ -27,6 +27,11 @@ TEST_CASE( "Word search", "[word_search]") {
   REQUIRE( ws.search(board, "ABFJN") == true );
 }
 
+TEST_CASE( "Fibonacci", "[fibonacci]") {
+  Fibonacci fib;
+  REQUIRE( fib.compute_dp(50) == fib.compute(50) );
+}
+
 /*
  TEST(sanity_check) // Declares a test named "sanity_check"
  {
