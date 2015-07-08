@@ -112,10 +112,58 @@ private:
  */
 class Fibonacci
 {
- public:
-  //  int compute(int n);
-  int compute_dp(int n);
+public:
   int compute(int n);
- private:
+  int compute_dp(int n);
+private:
   pair<int,int> helper(int n);
+};
+
+/*! \brief Factorial computes factorials
+ *
+ * My detailed description
+ */
+class Factorial
+{
+public:
+  unsigned long long int compute(unsigned int n);
+  unsigned long long int compute_recursive(unsigned int n);
+  unsigned long long int compute_tail_recursive(unsigned int n);
+  unsigned long long int  helper(unsigned int n, unsigned long long int acc);
+};
+
+/*! \brief Fact computes factorials via a template metaprogram
+ *
+ * My detailed description
+ */
+template <unsigned long long int n>
+struct Fact {
+  enum { value = n * Fact<n - 1>::value };
+};
+
+template <>
+struct Fact<0> {
+  enum { value = 1 };
+};
+
+/*! \brief SquareRootFloat computes floating point square roots with a binary search
+ *
+ * My detailed description
+ */
+class SquareRootFloat
+{
+public:
+  double compute(double x);
+private:
+  int compare(double x, double y);
+};
+
+/*! \brief SquareRootInt computes integer square roots with a binary search
+ *
+ * My detailed description
+ */
+class SquareRootInt
+{
+public:
+  int compute(int x);
 };

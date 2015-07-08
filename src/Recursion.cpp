@@ -227,3 +227,80 @@ pair<int,int> Fibonacci::helper(int n)
     }
   }
 }
+
+unsigned long long int Factorial::compute_recursive(unsigned int n)
+{
+  return n == 0 ? 1 : n * compute_recursive(n - 1);
+}
+
+unsigned long long int Factorial::helper(unsigned int n, unsigned long long int acc)
+{
+  if (n == 0) {
+    return acc;
+  } else {
+    return helper(n - 1, n * acc);
+  }
+}
+
+unsigned long long int Factorial::compute_tail_recursive(unsigned int n)
+{
+  return helper(n, 1);
+}
+
+unsigned long long int Factorial::compute(unsigned int n)
+{
+  unsigned long long int result = 1;
+  for (int i = 1; i <= n; ++i) { result *= i; }
+  return result;
+}
+
+int SquareRootFloat::compare(double x, double y)
+{
+  double diff = (x - y) / y;
+  return (diff < -std::numeric_limits<double>::epsilon() ? - 1 : diff > std::numeric_limits<double>::epsilon());
+}
+
+double SquareRootFloat::compute(double x)
+{
+  double L = 0, U = 0;
+  if (x == 1) {
+    return x;
+  } else if (x > 1) {
+    L = 1; U = x;
+  } else {
+    L = x; U = 1;
+  }
+
+  while (compare(L, U) == -1) {
+    double M = (L < 0) == (U < 0) ? L + (U - L) / 2 : (L + U) / 2;
+    double square = M * M;
+    if (compare(square, x) == 0) {
+      return M;
+    } else if (compare (square, x) == 1) {
+      U = M;
+    } else {
+      L = M;
+    }
+  }
+  return L;
+}
+
+int SquareRootInt::compute(int x)
+{
+  if (x <= 1)
+    return x;
+
+  int L = 0, U = x, R = 0;
+  while (L <= U) {
+    int M = L + (U - L) / 2;
+    if (M < x / M)
+      L = M + 1, R = M;
+    else if (M == x / M)
+      return M;
+    else
+      U = M - 1;
+  }
+  return R;
+}
+
+

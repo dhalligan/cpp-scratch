@@ -456,9 +456,6 @@ int binary_search_fixed_point(const vector<int>& A);
 int binary_search_min_circular(const vector<int>& A);
 int binary_search_circular(int k, const vector<int>& A);
 
-int square_root_int(int x);
-double square_root_float(double x);
-
 void find_anagrams(const vector<string>& dictionary);
 void find_palindrome_anagram(string& word, const vector<string>& dictionary);
 
@@ -533,25 +530,6 @@ void combination_helper(int n, int k, int start, vector<vector<int> >* res, vect
 vector<vector<int> > combinations(int n, int k);
 
 int water_tapped(const vector<int>& A);
-
-int fib_1(int n);
-int fib_2(int n);
-int fib_3(int n);
-int fib_4(int n);
-
-unsigned int fact_1(unsigned int n);
-unsigned int fact_2(unsigned int n);
-unsigned int fact_3(unsigned int n);
-
-template <long long int n>
-struct factorial {
-  enum { value = n * factorial<n - 1>::value };
-};
-
-template <>
-struct factorial<0> {
-  enum { value = 1 };
-};
 
 template <class T>
 struct equal_to {

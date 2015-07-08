@@ -490,19 +490,19 @@ int eval(const std::string& s)
        int result = 0;
        switch (symbol.front()) {
        case '+' :
-       	 result = x + y;
-       	 break;
+	 result = x + y;
+	 break;
        case '-' :
-       	 result = x - y;
-       	 break;
+	 result = x - y;
+	 break;
        case '*' :
-       	 result = x * y;
-       	 break;
+	 result = x * y;
+	 break;
        case '/' :
-       	 result = x / y;
-       	 break;
+	 result = x / y;
+	 break;
        default :
-       	 result = 0;
+	 result = 0;
        }
        eval_stack.emplace(result);
      } else {
@@ -543,7 +543,7 @@ int match_length(const std::string& s)
       stack.emplace(i);
     } else {
       if (stack.empty()) {
-     	// Matching failed. Move past this prefix.
+	// Matching failed. Move past this prefix.
 	last_end = i + 1;
       } else {
 	// Natched a paren. Compute distance to next unmatched paren.
@@ -755,10 +755,10 @@ void inorder_traversal(const unique_ptr<BinaryTreeNode2<int> >& T)
     if (!prev || curr == prev->left.get() || curr == prev->right.get()) {
       // Coming from parent node
       if (curr->left) {
-   	next = curr->left.get();
+	next = curr->left.get();
       } else {
-   	std::cout << curr->data << std::endl;
-   	next = (curr->right ? curr->right.get() : curr->parent);
+	std::cout << curr->data << std::endl;
+	next = (curr->right ? curr->right.get() : curr->parent);
       }
     } else if (curr->left.get() == prev) {
       // Coming back from left child
@@ -1113,61 +1113,6 @@ int binary_search_fixed_point(const vector<int>& A)
 //     return M + binary_search(k, vector<int>(A.cbegin() + M, A.cend()));
 // }
 
-int square_root_int(int x)
-{
-  if (x <= 1)
-    return x;
-
-  int L = 0, U = x;
-  while (L + 1 < U) {
-    int M = (L < 0) == (U < 0) ? L + (U - L) / 2 : (L + U) / 2;
-    int square = M * M;
-    if (square < x)
-      L = M;
-    else if (square == x)
-      return M;
-    else
-      U = M - 1;
-  }
-  if (U * U < x)
-    return U;
-  else
-    return L;
-}
-
-int compare(double x, double y)
-{
-  double diff = (x - y) / y;
-  return (diff < -std::numeric_limits<double>::epsilon() ? - 1 : diff > std::numeric_limits<double>::epsilon());
-}
-
-double square_root_float(double x)
-{
-  double L = 0.0, U = 0.0;
-  if (x == 1.0) {
-    return x;
-  } else if (x > 1.0) {
-    L = 1.0; U = x;
-  } else {
-    L = x; U = 1.0;
-  }
-
-  while (compare(L, U) == -1) {
-    double M = (L < 0) == (U < 0) ? L + (U - L) / 2 : (L + U) / 2;
-    std::cout << "current estimate... " << std::setprecision(30) << M << std::endl;
-    double square = M * M;
-    if (compare(square, x) == 0) {
-      return M;
-    } else if (compare (square, x) == 1) {
-      U = M;
-    } else {
-      L = M;
-    }
-  }
-  return L;
-}
-
-
 void find_anagrams(const vector<string>& dictionary)
 {
   std::unordered_map<string, vector<string> > hash;
@@ -1180,7 +1125,7 @@ void find_anagrams(const vector<string>& dictionary)
   for (const pair<string, vector<string> >& p : hash) {
     if (p.second.size() >= 2) {
       for (auto s : p.second) {
-  	std::cout << s << " " << std::endl;
+	std::cout << s << " " << std::endl;
       }
       std::cout << std::endl;
     }
@@ -1927,11 +1872,11 @@ void mark_region_if_surrounded(int i, int j, vector<vector<char> >* board, vecto
       is_surrounded = false;
     } else {
       for (auto& d : dir) {
-  	const pair<int,int> next {curr.first + d[0], curr.second + d[1]};
-  	if (((*board)[next.first][next.second] == 'W') && !(*visited)[next.first][next.second]) {
-  	  (*visited)[next.first][next.second] == true;
-  	  q.emplace_back(next.first, next.second);
-  	}
+	const pair<int,int> next {curr.first + d[0], curr.second + d[1]};
+	if (((*board)[next.first][next.second] == 'W') && !(*visited)[next.first][next.second]) {
+	  (*visited)[next.first][next.second] == true;
+	  q.emplace_back(next.first, next.second);
+	}
       }
     }
   }
@@ -1992,8 +1937,8 @@ shared_ptr<SGraphVertex<int> > copy_graph(const shared_ptr<SGraphVertex<int> >& 
     q.pop();
     for (auto e : v->edges) {
       if (vertex_map.find(e) == vertex_map.cend()) {
-  	vertex_map.emplace(e, std::make_shared<SGraphVertex<int> >(SGraphVertex<int>{e->label}));
-  	q.emplace(e);
+	vertex_map.emplace(e, std::make_shared<SGraphVertex<int> >(SGraphVertex<int>{e->label}));
+	q.emplace(e);
       }
       vertex_map[v]->edges.emplace_back(vertex_map[e]);
     }
@@ -2076,29 +2021,6 @@ pair<double,double> compute_height_diameter(const unique_ptr<TreeVertex<int> >& 
 double diameter(const unique_ptr<TreeVertex<int> >& T)
 {
   return T? compute_height_diameter(T).second : 0.0;
-}
-
-void combination_helper(int n, int k, int start, vector<vector<int> >* res, vector<int>* ans)
-{
-  if (ans->size() == k) {
-    res->emplace_back(*ans);
-    return;
-  }
-
-  if (k - ans->size() <= (n - 1) - start) {
-    combination_helper(n, k, start + 1, res, ans);
-  }
-  ans->emplace_back(start + 1);
-  combination_helper(n, k, start + 1, res, ans);
-  ans->pop_back();
-}
-
-vector<vector<int> > combinations(int n, int k)
-{
-  vector<vector<int> > result;
-  vector<int> ans;
-  combination_helper(n, k, 0, &result, &ans);
-  return result;
 }
 
 bool dfs_2_exist(ColoredVertex* curr, const ColoredVertex* pre)
@@ -2191,88 +2113,4 @@ bool two_sum_abs(const vector<int>& A, int k)
     }
     return false;
   }
-}
-
-int fib_1(int n)
-{
-  if (n == 0 || n == 1) {
-    return 1;
-  } else {
-    return fib_1(n - 1) + fib_1(n - 2);
-  }
-}
-
-int fib_2(int n)
-{
-  vector<int> fibs;
-  try {
-    fibs.reserve(n+1);
-  } catch (std::bad_alloc) {
-    std::cout << "fib_2: out of memory! exiting." << std::endl;
-    return 0;
-  }
-  fibs[0] = 1; fibs[1] = 1;
-  for (int i = 2; i <= n; i++) {
-    fibs[i] = (fibs[i-1] + fibs[i-2]);
-  }
-  return fibs[n];
-}
-
-int fib_3(int n)
-{
-  array<int,2> x {{1, 1}};
-  for (int i = 2; i <= n; ++i) {
-    int temp = x[1];
-    x[1] += x[0];
-    x[0] = temp;
-  }
-  return x[1];
-}
-
-pair<int,int> fib_4_helper(int n)
-{
-  if (n == 0) {
-    return {0, 1};
-  } else {
-    pair<int,int> x = fib_4_helper(n / 2);
-    pair<int,int> y = {x.first * (2 * x.second - x.first), x.first * x.first + x.second * x.second};
-    if (n & 1) {
-      return {y.second, y.first + y.second};
-    } else {
-      return y;
-    }
-  }
-}
-
-int fib_4(int n)
-{
-  return fib_4_helper(n).second;
-}
-
-unsigned int fact_1(unsigned int n)
-{
-  return n == 0 ? 1 : n * fact_1(n - 1);
-}
-
-unsigned int fact_2_helper(unsigned int n, unsigned int acc)
-{
-  if (n == 0) {
-    return acc;
-  } else {
-    return fact_2_helper(n - 1, n * acc);
-  }
-}
-
-unsigned int fact_2(unsigned int n)
-{
-  return fact_2_helper(n, 1);
-}
-
-unsigned int fact_3(unsigned int n)
-{
-  unsigned int acc = 1;
-  for (unsigned int i = 1; i <= n; ++i) {
-    acc *= i;
-  }
-  return acc;
 }

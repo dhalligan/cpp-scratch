@@ -32,6 +32,13 @@ TEST_CASE( "Fibonacci", "[fibonacci]") {
   REQUIRE( fib.compute_dp(50) == fib.compute(50) );
 }
 
+TEST_CASE( "Factorial", "[factorial]") {
+  Factorial f;
+  REQUIRE( f.compute(50) == f.compute_recursive(50) );
+  REQUIRE( f.compute_recursive(50) == f.compute_tail_recursive(50) );
+  REQUIRE( f.compute(50) == Fact<50>::value );
+}
+
 /*
  TEST(sanity_check) // Declares a test named "sanity_check"
  {
