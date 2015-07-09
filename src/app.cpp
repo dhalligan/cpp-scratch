@@ -363,44 +363,6 @@ std::vector<std::string> tokenize_sentence(const std::string& s)
   return result;
 }
 
-std::string phone_digit_letters(const char c)
-{
-  switch (c) {
-    case '1' :
-      return "";
-    case '2' :
-      return "abc";
-    case '3':
-      return "def";
-    case '4' :
-      return "ghi";
-    case '5' :
-      return "jkl";
-    case '6' :
-      return "mno";
-    case '7' :
-      return "pqrs";
-    case '8' :
-      return "tuv";
-    case '9' :
-      return "wxyz";
-    default :
-      return "";
-    }
-}
-
-void phone_mnemonic_helper(const std::string& number, int d, std::string* ans)
-{
-  if (d == number.size()) {
-    std::cout << *ans << std::endl;
-  } else {
-    for (auto c : phone_digit_letters(number[d])) {
-      (*ans)[d] = c;
-      phone_mnemonic_helper(number, d+1, ans);
-    }
-  }
-}
-
 shared_ptr<ListNode<int> > reverse_sublist(const shared_ptr<ListNode<int> >& L, int s, int f)
 {
   shared_ptr<ListNode<int> > s_ptr = L, prev_s_ptr = nullptr;

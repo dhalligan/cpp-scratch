@@ -380,8 +380,6 @@ std::string reverse_sentence(const std::string& s);
 
 std::vector<std::string> tokenize_sentence(const std::string& s);
 
-void phone_mnemonic_helper(const std::string& number, int d, std::string* ans);
-
 void print_linked_list(const shared_ptr<ListNode<int> >& node);
 
 void append_node(const shared_ptr<ListNode<int> >& node, shared_ptr<ListNode<int> >* head, shared_ptr<ListNode<int> >* tail);
