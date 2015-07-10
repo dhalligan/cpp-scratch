@@ -26,6 +26,7 @@
 #include <chrono>
 #include <thread>
 
+#include "OpenCVBasic.h"
 #include "BST.h"
 #include "List.h"
 #include "Heap.h"

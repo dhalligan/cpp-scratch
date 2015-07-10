@@ -6,7 +6,7 @@ LIST (REMOVE_ITEM project_LIB_SRCS ${PROJECT_SOURCE_DIR}/src/app.cpp)
 LIST (REMOVE_ITEM project_LIB_SRCS ${PROJECT_SOURCE_DIR}/src/app.h)
 
 SET (project_MOC_HEADERS app.h)
-SET (project_LIBS ${Boost_LIBRARIES})
+SET (project_LIBS ${Boost_LIBRARIES} ${OpenCV_LIBS})
 SET (project_BIN ${PROJECT_NAME})
 
 QT4_WRAP_CPP(project_MOC_SRCS_GENERATED ${project_MOC_HEADERS})

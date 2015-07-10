@@ -40,6 +40,8 @@ int App::exec()
   CountPermutation cp;
   cout << "cp: " << cp.compute(10, score_ways) << endl;
 
+  display_image("input/cat_ferret.jpg");
+
 }
 
 int ssDecodeColID(const std::string& s) {
