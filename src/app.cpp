@@ -40,7 +40,17 @@ int App::exec()
   CountPermutation cp;
   cout << "cp: " << cp.compute(10, score_ways) << endl;
 
-  display_image("input/cat_ferret.jpg");
+  //  display_image("input/cat_ferret.jpg");
+
+  Matrix m(1, 1, MatType<float>::type);
+  m.operator()<float>(0, 0) = 42.42;
+  float test = m.operator()<float>(0, 0);
+  cout << "test = " << test << endl;
+
+  Matrix n(1, 1, MatType<uint8_t>::type);
+  n.operator()<uint8_t>(0, 0) = 42;
+  uint8_t test2 = n.operator()<uint8_t>(0, 0);
+  cout << "test2 = " << static_cast<int>(test2) << endl;
 
 }
 

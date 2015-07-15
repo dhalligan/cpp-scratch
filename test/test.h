@@ -1,4 +1,5 @@
 //#include <unittest++/UnitTest++.h>
+#include <catch.hpp>
 
 /*
  * This file provides a transitive include for the UnitTest++ library

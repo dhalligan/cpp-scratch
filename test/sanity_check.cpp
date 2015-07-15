@@ -4,9 +4,7 @@
  * For additional reference information, see the "test.h" header.
  */
 
-// #include "test.h" // Brings in the UnitTest++ framework
-
-#include <catch.hpp>
+#include "test.h" // Brings in the UnitTest++ framework
 
 #include "Recursion.h"
 

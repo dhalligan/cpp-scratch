@@ -5,30 +5,63 @@ using std::cout;
 using std::endl;
 using std::string;
 
+/// Global variables
+
+int threshold_value = 0;
+int threshold_type = 3;;
+int const max_value = 255;
+int const max_type = 4;
+int const max_BINARY_value = 255;
+
+Mat src, src_gray, dst;
+char* window_name = "Threshold Demo";
+
+char* trackbar_type = "Type: \n 0: Binary \n 1: Binary Inverted \n 2: Truncate \n 3: To Zero \n 4: To Zero Inverted";
+char* trackbar_value = "Value";
+
+void Threshold_Demo( int, void* )
+{
+  /* 0: Binary
+     1: Binary Inverted
+     2: Threshold Truncated
+     3: Threshold to Zero
+     4: Threshold to Zero Inverted
+  */
+
+  threshold( src_gray, dst, threshold_value, max_BINARY_value,threshold_type );
+
+  imshow( window_name, dst );
+}
+
 int display_image(string filename)
 {
-  namedWindow("Before" , CV_WINDOW_AUTOSIZE);
+  /// Load an image
+  src = imread( "input/cat_ferret.jpg", 1 );
 
-  // Load the source image
-  Mat src = imread( "/home/deaglan/dev/git/cpp-scratch/input/cat_ferret.jpg", 1);
+  /// Convert the image to Gray
+  cvtColor( src, src_gray, CV_RGB2GRAY );
 
-  // Create a destination Mat object
-  Mat dst;
+  /// Create a window to display results
+  namedWindow( window_name, CV_WINDOW_AUTOSIZE );
 
-  // display the source image
-  imshow("Before", src);
+  /// Create Trackbar to choose type of Threshold
+  createTrackbar( trackbar_type,
+                  window_name, &threshold_type,
+                  max_type, Threshold_Demo );
 
-  for (int i=1; i<51; i=i+2)
-    { 
-      //smooth the image in the "src" and save it to "dst"
-      //      blur(src, dst, Size(i,i));
+  createTrackbar( trackbar_value,
+                  window_name, &threshold_value,
+                  max_value, Threshold_Demo );
 
-      GaussianBlur( src, dst, Size( i, i ), 0, 0 );      
+  /// Call the function to initialize
+  Threshold_Demo( 0, 0 );
 
-      //show the blurred image with the text
-      imshow( "Smoothing by avaraging", dst );
-
-      //wait for 3 seconds
-      waitKey(3000);
+  /// Wait until user finishes program
+  while(true)
+    {
+      int c;
+      c = waitKey( 20 );
+      if( (char)c == 27 )
+	{ break; }
     }
 }
