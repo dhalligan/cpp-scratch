@@ -42,9 +42,9 @@ int App::exec()
 
   //  display_image("input/cat_ferret.jpg");
 
-  Matrix m(1, 1, MatType<float>::type);
-  m.operator()<float>(0, 0) = 42.42;
-  float test = m.operator()<float>(0, 0);
+  Matrix m(1, 1, MatType<double>::type);
+  m.operator()<double>(0, 0) = 42.42;
+  double test = m.operator()<double>(0, 0);
   cout << "test = " << test << endl;
 
   Matrix n(1, 1, MatType<uint8_t>::type);
