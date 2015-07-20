@@ -52,6 +52,8 @@ int App::exec()
   uint8_t test2 = n.operator()<uint8_t>(0, 0);
   cout << "test2 = " << static_cast<int>(test2) << endl;
 
+  StackOneQueue<int> soq;
+
 }
 
 int ssDecodeColID(const std::string& s) {

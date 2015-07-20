@@ -37,6 +37,7 @@
 #include "Queue.h"
 #include "Stack.h"
 #include "QueueTwoStacks.h"
+#include "StackOneQueue.h"
 #include "StackSet.h"
 #include "MaxStack.h"
 #include "MaxQueue.h"
