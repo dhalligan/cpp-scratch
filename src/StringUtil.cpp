@@ -357,7 +357,14 @@ namespace StringUtil {
 
   string int_to_roman(int n)
   {
-
+    typedef pair<int, string> Entry;
+    vector<Entry> mp {{1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"}, {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"}, {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"}};
+    string result;
+    while(n) {
+      auto i = find_if(mp.begin(), mp.end(), [n](const Entry& e) { return n >= e.first; });
+      result += i->second, n -= i->first;
+    }
+    return result;
   }
 
   vector<string> group_anagrams(vector<string>& strs)

@@ -28,6 +28,7 @@ using std::fstream;
 using std::ios;
 using std::stringstream;
 using std::next;
+using std::pair;
 
 namespace StringUtil {
 
