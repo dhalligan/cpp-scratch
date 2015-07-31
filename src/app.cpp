@@ -54,6 +54,9 @@ int App::exec()
 
   StackOneQueue<int> soq;
 
+  Roman r;
+  cout << "valid numeral? " << r.valid_roman("MDXL") << endl;
+
 }
 
 int ssDecodeColID(const std::string& s) {

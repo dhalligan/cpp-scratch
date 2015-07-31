@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <regex>
 
 #include "Algorithm.h"
 
@@ -29,6 +30,7 @@ using std::ios;
 using std::stringstream;
 using std::next;
 using std::pair;
+using std::regex;
 
 namespace StringUtil {
 
@@ -51,6 +53,13 @@ namespace StringUtil {
       std::sort(sorted_rhs.begin(), sorted_rhs.end());
       return sorted_lhs < sorted_rhs;
     }
+  };
+
+  class Roman {
+  public:
+    int roman_to_int(string s);
+    string int_to_roman(int n);
+    bool valid_roman(string s);
   };
 
   void reverse_1(string& s);

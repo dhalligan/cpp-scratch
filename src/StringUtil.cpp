@@ -313,38 +313,18 @@ namespace StringUtil {
 
   }
 
-  int roman(char& c) {
-    switch (c) {
-    case 'I' :
-      return 1;
-    case 'V' :
-      return 5;
-    case 'X' :
-      return 10;
-    case 'L' :
-      return 50;
-    case 'C' :
-      return 100;
-    case 'D' :
-      return 500;
-    case 'M' :
-      return 1000;
-    default :
-      return 0;
-    }
-  }
 
-  int roman_to_int_1(const string& s)
-  {
-    unordered_map<char, int> mp = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
-    int sum = 0;
-    for (int i = 0; i < s.size(); ++i) {
-      sum += i == 0 || mp[s[i]] <= mp[s[i - 1]] ? mp[s[i]] : mp[s[i]] - 2 * mp[s[i - 1]];
-    }
-    return sum;
-  }
+  // int Roman::roman_to_int(const string& s)
+  // {
+  //   unordered_map<char, int> mp = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+  //   int sum = 0;
+  //   for (int i = 0; i < s.size(); ++i) {
+  //     sum += i == 0 || mp[s[i]] <= mp[s[i - 1]] ? mp[s[i]] : mp[s[i]] - 2 * mp[s[i - 1]];
+  //   }
+  //   return sum;
+  // }
 
-  int roman_to_int_2(const string& s)
+  int Roman::roman_to_int(string s)
   {
     unordered_map<char, int> mp = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
     if (s.size() == 0) { return 0; }
@@ -355,7 +335,7 @@ namespace StringUtil {
     return sum;
   }
 
-  string int_to_roman(int n)
+  string Roman::int_to_roman(int n)
   {
     typedef pair<int, string> Entry;
     vector<Entry> mp {{1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"}, {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"}, {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"}, {1, "I"}};
@@ -365,6 +345,12 @@ namespace StringUtil {
       result += i->second, n -= i->first;
     }
     return result;
+  }
+
+  bool Roman::valid_roman(string s)
+  {
+    regex p {R"(M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))"};
+    return regex_match(s, p);
   }
 
   vector<string> group_anagrams(vector<string>& strs)
