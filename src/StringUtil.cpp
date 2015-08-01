@@ -67,9 +67,10 @@ namespace StringUtil {
   bool is_permutation_3(const string& s, const string& t)
   {
     if (s.size() != t.size()) { return false; }
-    array<int,128> count{};
-    for (char c : s) { count[c]++; }
-    for (char c : t) { if(--count[c] < 0) return false; }
+    array<int,128> mp{};
+    for (char c : s) { mp[c]++; }
+    for (char c : t) { if(--mp[c] < 0) return false; }
+    for (int i : mp) { if (i > 0) { return false; } }
     return true;
   }
 
