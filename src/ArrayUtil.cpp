@@ -229,3 +229,16 @@ int maximum_subarray(const vector<int>& A)
   }
   return mx;
 }
+
+vector<int> product_except_self(const vector<int>& A)
+{
+  vector<int> result(A.size(), 1);
+  int left = 1, right = 1;
+  for (int i = 1; i < result.size(); ++i) {
+    left *= A[i - 1], result[i] *= left;
+  }
+  for (int i = result.size() - 2; i >= 0; --i) {
+    right *= A[i + 1], result[i] *= right;
+  }
+  return result;
+}

@@ -18,6 +18,12 @@ TEST_CASE("Majority element", "[majority_element]") {
   REQUIRE( majority_element(v) == 1 );
 }
 
+TEST_CASE("Product except self", "[product_except_self]") {
+  vector<int> v {1, 2, 3, 4, 5};
+  vector<int> r {120, 60, 40, 30, 24};
+  REQUIRE( product_except_self(v) == r );
+}
+
 /*
  TEST(sanity_check) // Declares a test named "sanity_check"
  {

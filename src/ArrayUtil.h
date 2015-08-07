@@ -29,6 +29,7 @@ int start_city(const vector<int>& gas, const vector<int>& cost);
 pair<int,pair<int,int> > water_trapped_two_indices(const vector<int>& A);
 int water_trapped(const vector<int>& A);
 int maximum_subarray(const vector<int>& A);
+vector<int> product_except_self(const vector<int>& A);
 
 template <class T>
 int binary_search(const T& k, const vector<T>& A)
